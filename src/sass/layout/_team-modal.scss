@@ -14,8 +14,8 @@
     visibility: visible;
     opacity: 1;
   
-    transition: opacity 850ms $cubic, visibility 850ms $cubic,
-      background-color 850ms $cubic;
+    transition: opacity 850ms cubic-bezier(0.4, 0, 0.2, 1), visibility 850ms cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 850ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .is-hidden-js {
@@ -25,7 +25,8 @@
     opacity: 0;
   
     & .modal-team {
-      // display: flex;
+      display: none;
+
       visibility: hidden;
       pointer-events: none;
       opacity: 0.3;
@@ -66,8 +67,8 @@
   
     box-shadow: 0 28px 42px rgba(0, 0, 0, 0.38), 0 20px 20px rgba(0, 0, 0, 0.33);
   
-    transition: transform 600ms $cubic, opacity 600ms $cubic,
-      visibility 800ms $cubic, box-shadow 600ms $cubic;
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1), opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 800ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 600ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .modal-team__close-btn {
@@ -82,7 +83,7 @@
     background-color: transparent;
     border-radius: 50%;
     cursor: pointer;
-    transition: color 300ms $cubic;
+    transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
     color: #000000;
   
     @media screen and (min-width: 768px) {
@@ -119,7 +120,7 @@
     background-size: 100%;
     background-color: transparent;
     background-position: -10%, 10%;
-    background-image: url(../images/lazy-load.png);
+    // background-image: url(../images/favicon);
     width: 100px;
     height: 35px;
   
@@ -183,11 +184,11 @@
       height: 150px;
     }
   
-    transition: transform 800ms $cubic;
+    transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
   
     .team__item:hover &,
     .team__item:focus & {
-      transform: translate(-7%, 12%) scale(1.2);
+      transform: translate(-7%, 12%) scale(1.1);
     }
   }
   
@@ -197,7 +198,7 @@
   
   .team__icon {
     position: absolute;
-    transition: transform $trans-time ease-in;
+    transition: transform 500ms ease-in;
   
     fill: currentColor;
   
@@ -217,6 +218,7 @@
     }
   
     &--github {
+      fill: #000000;
       @media screen and (max-width: 767px) {
         bottom: 15px;
         right: 7px;
