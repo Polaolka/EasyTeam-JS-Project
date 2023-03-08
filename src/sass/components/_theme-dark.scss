@@ -1,0 +1,127 @@
+.dark header {
+    background-color: var(--black-text-cl);
+  }
+
+.dark .gallery{
+  background-color: var(--black-text-cl);
+}
+
+.dark .gallery__title {
+  color: var(--white-cl);
+
+}
+
+.dark .pagination__btn{
+  border: 1px solid #4F4E4E;
+  background-color: var(--black-text-cl);
+}
+
+.dark .pagination__btn--active{
+  background-color: var(--main-text-cl);
+  color: var(--black-text-cl);
+}
+
+
+
+.dark .card__title {
+  color: var(--main-text-cl);
+  color: var(--white-cl)
+  
+}
+
+.dark  .footer {
+  background-color: var(--black-text-cl);
+}
+
+.dark body{
+  background-color: var(--black-text-cl);
+
+}
+
+.dark .store__location{
+  color: var(--white-cl)
+
+}
+
+.dark .contacts__info {
+  color: var(--white-cl)
+
+}
+
+.dark .subscription__text{
+  color: var(--white-cl)
+
+}
+
+.dark .subscription__policy{
+  color: var(--main-text-cl);
+
+}
+
+.dark .favorite{
+  background-color: var(--black-text-cl);
+}
+
+.dark .favorite__title{
+  color: var(--white-cl);
+}
+
+.dark .favorite__text{
+  color: var(--white-cl);
+}
+
+
+
+
+.dark .fav-cocktails{
+  background-color: var(--black-text-cl);
+  
+}
+
+.dark .fav-cocktails__title{
+    color: var(--white-cl);
+  
+}
+
+.dark .fav-card__title{
+  color: var(--white-cl);
+
+}
+
+.dark .components{
+  background-color: var(--black-text-cl);
+}
+
+.dark .component-name{
+  color: var(--white-cl);
+}
+
+.dark .component-type{
+  color: var(--white-cl);
+}
+
+.dark .line {
+  visibility: hidden; 
+}
+
+.dark .description-wraper{
+  border: none;
+  color: var(--black-text-cl);
+  background-color: var(--black-text-cl);
+  // visibility: hidden;
+}
+
+.dark .component-description{
+  color: gray
+}
+
+.dark .marker{
+  color: white;
+}
+
+.dark .subscription__btn{
+  background-color: var(--main-text-cl);
+  color: var(--white-cl);
+}
+
+

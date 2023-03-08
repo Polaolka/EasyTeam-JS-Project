@@ -1,0 +1,55 @@
+<div class="mobile-window js-menu-container">
+  <svg class="logo-mobile" width="156" height="43">
+    <use class="logo-icon" href="./images/icons.svg#COCKTAILS"></use>
+  </svg>
+
+  <ul class="header-list-mobile">
+    <li>
+      <div class="theme-toggler-mobile">
+        <p class="header-txt">Light</p>
+        <div>
+          <label class="switch">
+            <input type="checkbox" class="theme-slider-mobile"/>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <p class="header-txt dark">Dark</p>
+      </div>
+    </li>
+    <li>
+      <form class="search-form-mobile" id="search-form">
+        <button class="search-btn-mobile" type="submit">
+          <svg class="search-mobile" width="156" height="43">
+            <use
+              class="search-icon-mobile"
+              href="./images/icons.svg#search"
+            ></use>
+          </svg>
+        </button>
+        <input
+          class="input-mobile"
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Search"
+        />
+      </form>
+    </li>
+    <li>
+      <a class="header-item-mobile" href="./index.html">Home</a>
+    </li>
+    <li class="flex-wrapper-mobile">
+      <button type="button" class="header-item-mobile" href="./favorite.html">Favorite</button>
+      <button class="mark-more-mobile">&#8735;</button>
+    </li>
+  </ul>
+  <ul class="dropdown-menu-mobile js-menu-hidden">
+    <li class="li-item-drop first">
+      <a class="header-item-drop first" href="./favorite.html">Favorite cocktails</a>
+    </li>
+    <li class="li-item-drop last">
+      <a class="header-item-drop last" href="./favorites-ingredients.html">Favorite ingredients</a>
+    </li>
+  </ul>
+</div>
+<div class="mobile-footer"></div>

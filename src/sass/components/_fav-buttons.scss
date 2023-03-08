@@ -1,0 +1,104 @@
+.fav-buttons {
+  display: flex;
+  gap: 19px;
+  justify-content: center;
+
+  @include mq(tablet) {
+    gap: 12px;
+  }
+  @include mq(tablet) {
+    gap: 16px;
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid var(--main-text-cl);
+    border-radius: 4px;
+    font-family: var(----secondary-font);
+    letter-spacing: 0.02em;
+    @include fonts(
+      $fw: 400,
+      $fs: 14px,
+      $lh: calc(24px / 14px),
+      $color: var(--main-text-cl)
+    );
+
+    @include mq(tablet) {
+      @include fonts($fs: 20px, $lh: calc(24px / 20px));
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: 19px;
+    height: 17px;
+    fill: var(--main-text-cl);
+    stroke: var(--main-text-cl);
+
+    @include mq(tablet) {
+      width: 21px;
+      height: 19px;
+    }
+  }
+
+  &__btn--learn-more {
+    border: none;
+    background-color: var(--default-btn-cl);
+    color: var(--white-cl);
+    box-shadow: (0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    @include mq(mobile) {
+      width: 108px;
+      height: 39px;
+    }
+
+    @include mq(tablet) {
+      width: 160px;
+      height: 48px;
+    }
+    @include mq(desctop) {
+      width: 182px;
+    }
+
+    &:hover {
+      border: none;
+      background-color: var(--light-cl);
+      color: var(--main-text-cl);
+    }
+    &:focus {
+      background-color: var(--main-text-cl);
+      color: var(--white-cl);
+    }
+  }
+
+  &__btn--remove {
+    color: var(--main-text-cl);
+
+    @include mq(mobile) {
+      width: 110px;
+      height: 39px;
+    }
+
+    @include mq(tablet) {
+      width: 123px;
+      height: 48px;
+    }
+    @include mq(desctop) {
+      width: 141px;
+    }
+
+    &:hover {
+      background-color: var(--light-cl);
+      color: var(--main-text-cl);
+    }
+    &:focus {
+      background-color: var(--white-cl);
+      color: var(--main-text-cl);
+    }
+  }
+}

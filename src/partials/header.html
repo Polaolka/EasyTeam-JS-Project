@@ -1,0 +1,51 @@
+<header>
+  <div class="container">
+    <div class="flex-wrapper">
+      <ul class="header-list">
+        <li>
+          <svg class="logo" width="156" height="43">
+            <use class="logo-icon" href="./images/icons.svg#COCKTAILS"></use>
+          </svg>
+        </li>
+        <li><a class="header-item" href="./index.html">Home</a></li>
+        <li>
+          <button type="button" class="header-item dropdown-menu-btn">
+            Favorite
+          </button>
+          <ul class="dropdown-menu js-menu-hidden">
+            <li class="li-item-drop first">
+              <a class="header-item-drop first" href="./favorite.html">Favorite cocktails</a>
+            </li>
+            <li class="li-item-drop last">
+              <a class="header-item-drop last js-fav-ing-opener" href="./favorites-ingredients.html">Favorite
+                ingredients</a>
+            </li>
+          </ul>
+
+        </li>
+      </ul>
+
+      <form class="search-form" id="search-form">
+        <button class="search-btn" type="submit">
+          <svg class="search" width="156" height="43">
+            <use class="search-icon" href="./images/icons.svg#search"></use>
+          </svg>
+        </button>
+        <input class="input" type="text" name="searchQuery" autocomplete="off" placeholder="Search" />
+      </form>
+      <div class="flex-wrapper theme">
+        <p class="header-txt">Light</p>
+        <div>
+          <label class="switch">
+            <input type="checkbox" class="theme-toggler" />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <p class="header-txt dark">Dark</p>
+      </div>
+      <button class="gamburger js-open-menu ">
+        <span class="gamburger-inner"></span>
+      </button>
+    </div>
+  </div>
+</header>

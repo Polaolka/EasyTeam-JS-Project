@@ -1,0 +1,156 @@
+.components {
+  transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  position: absolute;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 320px;
+  max-height: 673px;
+  background-color: var(--white-cl);
+
+  @include mq(tablet) {
+    max-width: 715px;
+    max-height: 600px;
+  }
+}
+.close-modal2 {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  padding: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: inherit;
+  border: none;
+}
+.component-name-wraper {
+  width: 100%;
+  padding: 10px 15px 0px 15px;
+  @include mq(tablet) {
+    padding: 20px 28px 8px 28px;
+  }
+  @include mq(desktop) {
+    padding: 20px 25px 18px 8px;
+  }
+}
+.componet-descriptio-wraper {
+  width: 100%;
+
+  padding: 40px 15px 3px 15px;
+  @include mq(tablet) {
+    padding: 10px 28px 28px 28px;
+  }
+  @include mq(desktop) {
+    padding: 10px 33px 20px 28px;
+  }
+}
+.description-wraper {
+  width: 100%;
+  height: 150px;
+  padding: 15px 10px;
+  border: 1px solid var(--main-text-cl);
+  border-radius: 4px;
+  overflow-y: scroll;
+  background-color: white;
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 30px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparentva;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 6px solid var(--main-text-cl); // Изменить цвет при смене темы
+    background-color: var(--gray-text-cl);
+    border-radius: 20px;
+    height: 40px;
+  }
+  @include mq(tablet) {
+    width: 100%;
+    height: 300px;
+  }
+}
+.component-not-wrapper {
+  padding: 50px;
+  width: 650px;
+  height: 300px;
+  background-color: var(--white-cl);
+}
+
+.component-not {
+  font-family: Roboto;
+  @include fonts($fw: 900, $fs: 32px, $lh: 1.18, $color: var(--black-text-cl));
+  margin-bottom: 0px;
+  @include mq(tablet) {
+    margin-bottom: 28px;
+  }
+}
+
+.component-name {
+  font-family: Roboto;
+  @include fonts($fw: 900, $fs: 32px, $lh: 1.18, $color: var(--black-text-cl));
+  margin-bottom: 0px;
+  @include mq(tablet) {
+    margin-bottom: 28px;
+  }
+}
+.component-type {
+  @include fonts($fw: 600, $fs: 16px, $lh: 1.6, $color: var(--black-text-cl));
+}
+
+.line {
+  width: 320px;
+  height: 1px;
+  opacity: 0;
+  background-color: var(--main-text-cl);
+  @include mq(tablet) {
+    opacity: 1;
+    width: 715px;
+    // margin-bottom: 28px;
+  }
+}
+
+.component {
+  @include fonts($fw: 600, $fs: 16px, $lh: 1.6, $color: var(--black-text-cl));
+}
+.component-description {
+  @include fonts($fw: 400, $fs: 16px, $lh: 1.75, $color: var(--modal-text-cl));
+  margin-bottom: 28px;
+}
+.component-list {
+  margin-top: 10px;
+  margin-bottom: 25px;
+  @include mq(tablet) {
+    margin-bottom: 10px;
+  }
+}
+.component-list-item {
+  @include fonts($fw: 400, $fs: 16px, $lh: 1.6, $color: var(--modal-text-cl));
+}
+
+.button-components-add {
+  min-width: 185px;
+  min-height: 48px;
+  background-color: var(--main-text-cl);
+  border-radius: 4px;
+  padding: 12px 24px;
+
+  @include fonts($fw: 400, $fs: 20px, $lh: 1.2, $color: var(--white-cl));
+  letter-spacing: 0.02em;
+  border: none;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+  }
+  @include mq(tablet) {
+    margin-right: auto;
+  }
+}

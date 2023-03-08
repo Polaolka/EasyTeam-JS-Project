@@ -1,0 +1,26 @@
+@import './utils/variables';
+@import './utils/reset';
+@import './utils/mixins';
+@import './utils/placeholders';
+
+// utils styles
+@import './vendors/common';
+@import './vendors/base';
+@import './vendors/container';
+
+@import './components/buttons';
+@import './components/card-set';
+@import './components/theme-toggler';
+@import './components/fav-buttons';
+@import './components/theme-dark';
+@import './components/scr';
+//  styles
+@import './layout/header';
+@import './layout/modal-mobile';
+@import './layout/hero';
+@import './layout/gallery';
+@import './layout/footer';
+@import './layout/modal-coctail';
+@import './layout/modal-ing';
+@import './layout/favorites-coctails';
+@import './layout/favorites-ing';

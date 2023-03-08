@@ -1,0 +1,177 @@
+.backdrop {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  // background: rgba(0, 0, 0, 0.3);
+  // pointer-events: ;
+  backdrop-filter: blur(10px);
+
+  opacity: 1;
+  overflow-y: hidden;
+  visibility: visible;
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1) 200ms,
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1) 200ms,
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-coctails {
+  position: absolute;
+  z-index: 30;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  min-width: 270px;
+  max-height: 656px;
+  background-color: #fcfcfc;
+  overflow-y: scroll;
+  padding: 40px 20px 8px 20px;
+  @include mq(tablet) {
+    min-width: 822px;
+    overflow-y: hidden;
+    // min-height: 598px;
+    padding-right: 28px;
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 8px;
+    transform: translate(-50%, -40%);
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @include mq(desktop) {
+  }
+}
+
+.close-modal {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  padding: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: inherit;
+  border: none;
+  z-index: 100;
+}
+
+.ingridients-title {
+  font-family: Roboto;
+
+  @include fonts($fw: 900, $fs: 32px, $lh: 1.18, $color: var(--black-text-cl));
+
+  margin-bottom: 10px;
+
+  @include mq(tablet) {
+    margin-left: 320px;
+    margin-top: 40px;
+    margin-bottom: 28px;
+  }
+}
+.instruction-wraper {
+  @include mq(tablet) {
+    order: 3;
+  }
+}
+.instraction {
+  @include fonts($fw: 400, $fs: 16px, $lh: 1.75, $color: var(--modal-text-cl));
+  margin-bottom: 15px;
+  @include mq(tablet) {
+    margin-left: 28px;
+    margin-right: 179px;
+  }
+}
+.instruction-title {
+  @include fonts($fw: 600, $fs: 16px, $lh: 1.6, $color: var(--black-text-cl));
+  margin-bottom: 20px;
+  @include mq(tablet) {
+    margin-left: 28px;
+  }
+}
+.coctails-img {
+  width: 280px;
+  height: 280px;
+  border-radius: 4px;
+  margin-bottom: 22px;
+  // border: 1px solid tomato;
+  @include mq(tablet) {
+    width: 288px;
+    height: 320px;
+    position: absolute;
+    top: 0;
+    lef: 0;
+  }
+}
+.ingridients {
+  @include fonts($fw: 600, $fs: 16px, $lh: 1.6, $color: var(--black-text-cl));
+  margin-bottom: 8px;
+  @include mq(tablet) {
+    margin-left: 320px;
+  }
+}
+.ingridients-per {
+  margin-bottom: 8px;
+  @include fonts($fw: 300, $fs: 14px, $lh: 1.5, $color: var(--black-text-cl));
+  @include mq(tablet) {
+    margin-left: 320px;
+  }
+}
+
+.ingridients-list {
+  list-style: none;
+
+  @include mq(tablet) {
+    display: block;
+    min-height: 150px;
+    order: 2;
+    margin-left: 320px;
+  }
+}
+
+.ingridients-link {
+  @include fonts($fw: 400, $fs: 16px, $lh: 1.6, $color: #000917);
+  text-decoration: none;
+  @include mq(tablet) {
+    order: 4;
+    margin-left: auto;
+  }
+}
+.ingridients-link:hover,
+.ingridients-link:focus {
+  cursor: pointer;
+  color: var(--main-text-cl);
+}
+
+.button-add {
+  min-width: 185px;
+  min-height: 48px;
+  padding: 12px 24px;
+  background-color: var(--main-text-cl);
+  border-radius: 4px;
+  @include fonts($fw: 400, $fs: 20px, $lh: 1.2, $color: var(--white-cl));
+  letter-spacing: 0.02em;
+  border: none;
+  &:hover,
+  &:focus {
+    cursor: pointer;
+  }
+  @include mq(tablet) {
+    order: 4;
+  }
+}
