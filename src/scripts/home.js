@@ -12,3 +12,4 @@ import './common/footer';
 
 import './common/add-to-favorites';
 import './home/search-by-LS';
+import './modals/team-modal';
