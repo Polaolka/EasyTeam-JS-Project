@@ -1,6 +1,7 @@
 import ApiService from '../api/apiService';
 import Render from '../render/render';
 import { handleOpenCloseModal } from '../modals/open-close-modal';
+import icons from "../../images/icons.svg"
 import FavGallery from '../favorites/build-fav-gallery';
 
 const galleryEl = document.querySelector('.gallery__wrapper');
@@ -180,18 +181,18 @@ galleryEl.addEventListener('click', e => {
     handleOpenCloseModal(e);
   }
   if (addToBtn) {
-    console.log('addToBtn: ', addToBtn);
+    addToBtn.classList.remove('buttons__btn--add-to');
     addToBtn.classList.add('fav-buttons__btn--remove');
-    addToBtn.classList.remove('.buttons__btn--add-to');
 
-    addToBtn.textContent = 'Remove';
+    addToBtn.innerHTML = `Remove<svg class="buttons__icon"><use href="${icons}#heart"></use></svg>`;
     favGallery.addToFavorite(addToBtn);
   }
   if (removeBtn) {
-    addToBtn.classList.add('fav-buttons__btn--remove');
+    console.log('removeBtn: ', removeBtn);
     removeBtn.classList.remove('fav-buttons__btn--remove')
-    addToBtn.textContent = 'Add to';
+    removeBtn.classList.add('buttons__btn--add-to');
 
+    removeBtn.innerHTML = `Add to<svg class="buttons__icon"><use href="${icons}#heart"></use></>`;
     favGallery.removeFromFavoriteFromGallery(removeBtn);
   }
 });

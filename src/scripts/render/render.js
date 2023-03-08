@@ -9,12 +9,19 @@ export default class Render {
     // Рендеримо галерею
     renderGallery(data) {
         const galleryItems = data.map(({ strDrinkThumb, strDrink, idDrink }) => {
+            const lockalStorageItems = JSON.parse(localStorage.getItem('favIds'));
+            const isInLS = lockalStorageItems.includes(idDrink);
+            const className = isInLS ? 'fav-buttons__btn--remove' : 'buttons__btn--add-to';
+            const btnText = isInLS
+                ? `Remove<svg class="buttons__icon"><usehref="${icons}#heart"></usehref=></svg>`
+                : `Add to<svgclass="buttons__icon"><use href="${icons}#heart"></use></>`;
+
             return `<div class="card" id="${idDrink}">
                 <img src="${strDrinkThumb}" alt="${strDrink}" class="card__img">
                 <h3 class="card__title">${strDrink}</h3>
                 <div class="buttons">
                     <button type="button" class="buttons__btn buttons__btn--learn-more">Learn more</button>
-                    <button type="button" class="buttons__btn buttons__btn--add-to" data-id="${idDrink}">Add to
+                    <button type="button" class="buttons__btn ${className}" data-id="${idDrink}">${btnText}
                     <svg class="buttons__icon">
                         <use href="${icons}#heart"></use>
                     </svg>
