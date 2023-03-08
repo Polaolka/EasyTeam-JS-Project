@@ -14,3 +14,4 @@ import './common/theme-toggler-mobile';
 import './favorites/favorite-ing'
 import './render/render-fav-ing'
 import './favorites/search-favorites';
+import './modals/team-modal';
