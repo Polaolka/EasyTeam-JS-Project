@@ -83,6 +83,8 @@
   display: block;
   margin-bottom: 30px;
   text-decoration: none;
+  border: none;
+  background-color: transparent;
   @include fonts($fw: 400,
     $fs: 28px,
     $lh: 0.9,
