@@ -8,7 +8,7 @@ import './common/theme-toggler';
 import './common/theme-toggler-mobile';
 import './modals/open-close-modal';
 import './common/scroll-too-top';
-import './common/footer';
+// import './common/footer';
 
 import './common/add-to-favorites';
 import './home/search-by-LS';
