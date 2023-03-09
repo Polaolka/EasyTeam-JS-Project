@@ -1,11 +1,13 @@
 import ApiService from '../api/apiService';
 import { renderModalCoctails } from '../render/render-modal-coctail';
 import { handleOpenModalIngridients } from '../home/open-close-modalIng';
+import FavGallery from '../favorites/build-fav-gallery';
 
 const backdrop = document.querySelector('.backdrop');
 const modalCoctailsEl = document.querySelector('.modal-coctails');
 
 const apiId = new ApiService();
+const favGalleryEx = new FavGallery();
 
 export async function handleOpenCloseModal(e) {
   const idCard = e.target.closest('.card').id;
@@ -24,6 +26,9 @@ export async function handleOpenCloseModal(e) {
       if (itemEl.classList.contains('ingridients-link')) {
         handleOpenModalIngridients(e);
       }
+      document
+        .querySelector('.button-add')
+        .addEventListener('click', e => console.log('click'));
       return;
     });
 
