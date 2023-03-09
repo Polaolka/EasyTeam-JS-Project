@@ -10,6 +10,14 @@ export default class Render {
     renderGallery(data) {
         const galleryItems = data.map(({ strDrinkThumb, strDrink, idDrink }) => {
             const lockalStorageItems = JSON.parse(localStorage.getItem('favIds'));
+<<<<<<< Updated upstream
+=======
+
+            if(!lockalStorageItems) {
+                localStorage.setItem('favIds', JSON.stringify([]));
+              }
+
+>>>>>>> Stashed changes
             const isInLS = lockalStorageItems.includes(idDrink);
             const className = isInLS ? 'fav-buttons__btn--remove' : 'buttons__btn--add-to';
             const btnText = isInLS
