@@ -12,7 +12,7 @@ export default class Render {
             const lockalStorageItems = JSON.parse(localStorage.getItem('favIds'));
 
             if(!lockalStorageItems) {
-                localStorage.setItem('favIds'.stringify([]));
+                localStorage.setItem('favIds', JSON.stringify([]));
               }
 
 
