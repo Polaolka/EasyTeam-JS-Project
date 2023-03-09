@@ -8,7 +8,6 @@ const modalCoctailsEl = document.querySelector('.modal-coctails');
 
 const apiId = new ApiService();
 // const favGalleryEx = new FavGallery();
-const favGallery = new FavGallery();
 
 export async function handleOpenCloseModal(e) {
   const idCard = e.target.closest('.card').id;
@@ -20,32 +19,18 @@ export async function handleOpenCloseModal(e) {
   backdrop.classList.remove('is-hidden');
   modalCoctailsEl.classList.remove('is-hidden');
 
-  modalCoctailsEl.addEventListener('click', e => {
-    const itemEl = e.target;
-    const ingrLinkEl = itemEl.classList.contains('ingridients-link');
-    const btnAdd = itemEl.classList.contains('button-add');
-    const btnRemove = itemEl.classList.contains('fav-buttons__btn--remove');
-    if (ingrLinkEl) {
-      handleOpenModalIngridients(e);
-    }
-    if (btnAdd) {
-      addToBtn.classList.remove('buttons__btn--add-to');
-      addToBtn.classList.add('fav-buttons__btn--remove');
-
-      addToBtn.innerHTML = `Remove`;
-
-      favGallery.addToFavorite(btnAdd);
-    }
-    if (btnRemove) {
-      removeBtn.classList.remove('fav-buttons__btn--remove');
-      removeBtn.classList.add('buttons__btn--add-to');
-
-      removeBtn.innerHTML = `Add to<svg class="buttons__icon"><use href="${icons}#heart"></use></>`;
-
-      favGallery.removeFromFavorite(btnRemove);
-    }
-    return;
-  });
+  modalCoctailsEl
+    .querySelector('.ingridients-list')
+    .addEventListener('click', e => {
+      const itemEl = e.target;
+      if (itemEl.classList.contains('ingridients-link')) {
+        handleOpenModalIngridients(e);
+      }
+      document
+        .querySelector('.button-add')
+        .addEventListener('click', e => console.log('click'));
+      return;
+    });
 
   const closeModal = document.querySelector('.close-modal');
   closeModal.addEventListener('click', () => {
