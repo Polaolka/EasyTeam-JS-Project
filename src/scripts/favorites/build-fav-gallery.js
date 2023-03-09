@@ -1,6 +1,7 @@
 import ApiService from '../api/apiService';
 import Render from '../render/render';
 import { handleOpenCloseModalFavorite } from '../modals/open-close-modal';
+import icons from "../../images/icons.svg";
 
 const render = new Render();
 const apiService = new ApiService();
@@ -31,7 +32,6 @@ export default class FavGallery {
 
   async renderByLetter(letter) {
     const favIds = JSON.parse(localStorage.getItem('favIds') ?? '{}');
-    console.log(favIds);
 
     for (let id in favIds) {
       const drink = await apiService.fetchDataById(id);
@@ -70,7 +70,6 @@ export default class FavGallery {
 
   addToFavorite(addToBtn) {
     const id = addToBtn.dataset.id;
-    console.log(id);
 
     let favIds = JSON.parse(localStorage.getItem('favIds'));
 
@@ -80,21 +79,13 @@ export default class FavGallery {
       favIds.push(id);
       localStorage.setItem('favIds', JSON.stringify(favIds));
       return;
-    } else { 
+    } else {
       favIds = JSON.parse(localStorage.getItem('favIds'));
       favIds.push(id);
       localStorage.setItem('favIds', JSON.stringify(favIds));
-      return
+      return;
     }
   }
-
-  //   const favIds = JSON.parse(localStorage.getItem('favIds') ?? '[]');
-  //   if (!favIds.includes(id)) {
-  //     console.log();
-  //     favIds.push(id);
-  //     localStorage.setItem('favIds', JSON.stringify(favIds));
-  //   }
-  // }
 
   removeFromFavorite(btnEl) {
     const id = btnEl.dataset.id;
@@ -131,7 +122,7 @@ export default class FavGallery {
           <button type="button" class="fav-buttons__btn fav-buttons__btn--learn-more">Learn more</button>
           <button type="button" class="fav-buttons__btn fav-buttons__btn--remove" data-id="${idDrink}">Remove
             <svg class="fav-buttons__icon">
-              <use href="./images/icons.svg#icon-heart_fill"></use>
+              <use href="${icons}#icon-heart_fill"></use>
             </svg>
           </button>
         </div>
