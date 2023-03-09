@@ -10,6 +10,7 @@ const favWrapper = document.querySelector('.fav-cocktails__box');
 const favTitle = document.querySelector('.fav-cocktails__title');
 
 export default class FavGallery {
+  constructor() {}
   async render() {
     const favIds = JSON.parse(localStorage.getItem('favIds') ?? '[]');
 

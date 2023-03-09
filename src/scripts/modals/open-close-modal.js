@@ -8,7 +8,7 @@ const modalCoctailsEl = document.querySelector('.modal-coctails');
 
 const apiId = new ApiService();
 // const favGalleryEx = new FavGallery();
-const favGallery = new FavGallery();
+// const favGallery = new FavGallery();
 
 export async function handleOpenCloseModal(e) {
   const idCard = e.target.closest('.card').id;
