@@ -68,10 +68,12 @@
     &:hover {
       background-color: var(--light-cl);
       color: var(--main-text-cl);
+      cursor: pointer;
     }
     &:focus {
       background-color: var(--main-text-cl);
       color: var(--light-cl);
+      cursor: pointer;
     }
   }
 

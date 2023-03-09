@@ -167,10 +167,18 @@
   @include fonts($fw: 400, $fs: 20px, $lh: 1.2, $color: var(--white-cl));
   letter-spacing: 0.02em;
   border: none;
-  &:hover,
-  &:focus {
+
+  &:hover {
+    background-color: var(--light-cl);
+    color: var(--main-text-cl);
     cursor: pointer;
   }
+  &:focus {
+    background-color: var(--main-text-cl);
+    color: var(--light-cl);
+    cursor: pointer;
+  }
+
   @include mq(tablet) {
     order: 4;
   }

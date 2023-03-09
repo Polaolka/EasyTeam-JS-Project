@@ -8,7 +8,6 @@ const apiService = new ApiService();
 const favWrapper = document.querySelector('.fav-cocktails__box');
 const favTitle = document.querySelector('.fav-cocktails__title');
 
-
 export default class FavGallery {
   async render() {
     const favIds = JSON.parse(localStorage.getItem('favIds') ?? '[]');
@@ -17,9 +16,8 @@ export default class FavGallery {
       const notFoundBlock = render.createNotFoundMarkup();
       favTitle.style.display = 'none';
       favWrapper.insertAdjacentHTML('beforeend', notFoundBlock);
-      return
+      return;
     }
-
 
     for (let i = 0; i < favIds.length; i += 1) {
       const drink = await apiService.fetchDataById(favIds[i]);
@@ -32,7 +30,8 @@ export default class FavGallery {
   }
 
   async renderByLetter(letter) {
-    const favIds = JSON.parse(localStorage.getItem('favIds') ?? '{}')
+    const favIds = JSON.parse(localStorage.getItem('favIds') ?? '{}');
+    console.log(favIds);
 
     for (let id in favIds) {
       const drink = await apiService.fetchDataById(id);
@@ -53,7 +52,7 @@ export default class FavGallery {
   }
 
   addListeners() {
-    favWrapper.addEventListener('click', (e) => {
+    favWrapper.addEventListener('click', e => {
       const elem = e.target;
       const removeBtn = elem.closest('.fav-buttons__btn--remove');
       const learnMoreBtn = elem.closest('.fav-buttons__btn--learn-more');
@@ -62,48 +61,64 @@ export default class FavGallery {
         this.removeFromFavorite(removeBtn);
       }
       if (learnMoreBtn) {
-        const elem = e.target
+        const elem = e.target;
         const id = elem.closest('.fav-card').id;
         handleOpenCloseModalFavorite(id);
       }
-
-    })
-
+    });
   }
 
   addToFavorite(addToBtn) {
     const id = addToBtn.dataset.id;
-    const favIds = JSON.parse(localStorage.getItem('favIds') ?? '[]');
+    console.log(id);
 
-    if (!favIds.includes(id)) {
+    let favIds = JSON.parse(localStorage.getItem('favIds'));
+
+    if (!favIds) {
+      localStorage.setItem('favIds', JSON.stringify([]));
+      favIds = JSON.parse(localStorage.getItem('favIds'));
       favIds.push(id);
       localStorage.setItem('favIds', JSON.stringify(favIds));
+      return;
+    } else { 
+      favIds = JSON.parse(localStorage.getItem('favIds'));
+      favIds.push(id);
+      localStorage.setItem('favIds', JSON.stringify(favIds));
+      return
     }
   }
+
+  //   const favIds = JSON.parse(localStorage.getItem('favIds') ?? '[]');
+  //   if (!favIds.includes(id)) {
+  //     console.log();
+  //     favIds.push(id);
+  //     localStorage.setItem('favIds', JSON.stringify(favIds));
+  //   }
+  // }
 
   removeFromFavorite(btnEl) {
     const id = btnEl.dataset.id;
 
-    const favIds = JSON.parse(localStorage.getItem('favIds') ?? '[]')
+    const favIds = JSON.parse(localStorage.getItem('favIds') ?? '[]');
 
-    const filtred = favIds.filter((i) => i !== id);
-    btnEl.closest('.fav-card').remove()
+    const filtred = favIds.filter(i => i !== id);
+    btnEl.closest('.fav-card').remove();
     if (filtred.length === 0) {
-      localStorage.removeItem('favIds')
-      this.render()
-      return
+      localStorage.removeItem('favIds');
+      this.render();
+      return;
     }
     localStorage.setItem('favIds', JSON.stringify(filtred));
   }
   removeFromFavoriteFromGallery(btnEl) {
     const id = btnEl.dataset.id;
 
-    const favIds = JSON.parse(localStorage.getItem('favIds') ?? '[]')
+    const favIds = JSON.parse(localStorage.getItem('favIds') ?? '[]');
 
-    const filtred = favIds.filter((i) => i !== id);
+    const filtred = favIds.filter(i => i !== id);
     if (filtred.length === 0) {
-      localStorage.removeItem('favIds')
-      return
+      localStorage.removeItem('favIds');
+      return;
     }
     localStorage.setItem('favIds', JSON.stringify(filtred));
   }
