@@ -2,8 +2,12 @@ import icons from '../../images/icons.svg';
 const modalCoctails = document.querySelector('.modal-coctails');
 
 export function renderModalCoctails(data) {
-  const lockalStorageItems = JSON.parse(localStorage.getItem('favIds'));
-  const isInLS = lockalStorageItems.includes(idDrink);
+
+  let lockalStorageItems = JSON.parse(localStorage.getItem('favIds'));
+
+            if (lockalStorageItems === null) lockalStorageItems = [];
+
+            const isInLS = lockalStorageItems.includes(idDrink);
   const className = isInLS
     ? 'fav-buttons__btn--remove'
     : 'buttons__btn--add-to';
