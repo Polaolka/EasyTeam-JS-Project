@@ -7,6 +7,5 @@ import './modals/open-close-modal';
 import './common/input-validation';
 import './common/slider_glide';
 import './common/dropdown-menu-mob';
-import './common/theme-toggler-mobile';
 import './favorites/search-favorites';
 import './modals/team-modal';
