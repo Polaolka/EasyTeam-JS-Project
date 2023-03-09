@@ -15,6 +15,7 @@ export default class Render {
                 localStorage.setItem('favIds', JSON.stringify([]));
               }
 
+
             const isInLS = lockalStorageItems.includes(idDrink);
             const className = isInLS ? 'fav-buttons__btn--remove' : 'buttons__btn--add-to';
             const btnText = isInLS

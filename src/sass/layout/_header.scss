@@ -272,7 +272,10 @@ header {
     background-color: var(--dark-bg-cl);
   }
 }
-
+.dark .li-item-drop.first {
+  background-color: var(--dark-bg-cl);
+  color: var(--white-cl);
+}
 .dark .li-item-drop.last {
   border-top: 1px solid var(--white-cl);
 }
