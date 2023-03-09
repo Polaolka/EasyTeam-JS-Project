@@ -1,7 +1,7 @@
 import ApiService from '../api/apiService';
 import Render from '../render/render';
 import { handleOpenCloseModalFavorite } from '../modals/open-close-modal';
-import icons from '../../images/icons.svg';
+import icons from "../../images/icons.svg";
 
 const render = new Render();
 const apiService = new ApiService();
