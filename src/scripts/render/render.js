@@ -4,7 +4,6 @@ const galleryEl = document.querySelector('.gallery__wrapper');
 import icons from '../../images/icons.svg';
 
 export default class Render {
-
   constructor() {}
   // Рендеримо галерею
   renderGallery(data) {
