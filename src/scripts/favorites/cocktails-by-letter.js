@@ -1,22 +1,22 @@
-import FavGallery from "./build-fav-gallery";
+// import FavGallery from "./build-fav-gallery";
 
-const favGallery = new FavGallery();
+// const favGallery = new FavGallery();
 
-const letterBox = document.querySelector('.search-container');
+// const letterBox = document.querySelector('.search-container');
 
-letterBox.addEventListener('click', handleClickToLetter);
+// letterBox.addEventListener('click', handleClickToLetter);
 
-async function handleClickToLetter(e) {
-  if (e.target.classList.value !== 'search-box') {
-    return;
-  }
+// async function handleClickToLetter(e) {
+//   if (e.target.classList.value !== 'search-box') {
+//     return;
+//   }
 
-  favGallery.removeCocktails();
+//   favGallery.removeCocktails();
 
-  const selectedLetter = e.target.textContent;
+//   const selectedLetter = e.target.textContent;
 
-  favGallery.renderByLetter(selectedLetter);
+//   favGallery.renderByLetter(selectedLetter);
 
-}
+// }
 
 
