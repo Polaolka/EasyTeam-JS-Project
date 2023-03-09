@@ -1,18 +1,7 @@
 import icons from '../../images/icons.svg';
 const modalCoctails = document.querySelector('.modal-coctails');
 
-export function renderModalCoctails({ strDrinkThumb, strDrink, idDrink }) {
-
-  let lockalStorageItems = JSON.parse(localStorage.getItem('favIds'));
-
-            if (lockalStorageItems === null) lockalStorageItems = [];
-
-            const isInLS = lockalStorageItems.includes(idDrink);
-  const className = isInLS
-    ? 'fav-buttons__btn--remove'
-    : 'buttons__btn--add-to';
-  const btnText = isInLS ? `Remove from favourite` : `Add to`;
-
+export function renderModalCoctails(data) {
   const markupModalCoctail = `
   <svg class="close-modal" width="32" height="32">
   <use href="${icons}#icon-close-modal"></use>
@@ -33,7 +22,7 @@ export function renderModalCoctails({ strDrinkThumb, strDrink, idDrink }) {
     <ul class="ingridients-list">
       ${templateIngridients(data)}
 </ul>
-      <button type="button" class="button-add ${className}">${btnText}</button>
+      <button type="button" class="button-add">Add to favorite</button>
       `;
   modalCoctails.innerHTML = markupModalCoctail;
 }
