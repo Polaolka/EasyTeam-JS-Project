@@ -5,23 +5,16 @@ const LS_KEY_FAV_ING = 'Fav-Ingredients';
 
 
 const favIngWrapper = document.querySelector('.fav-ing-wrapper');
-// const favIngOpener = document.querySelector('.js-fav-ing-opener');
 const apiService = new ApiService();
-// favIngOpener.addEventListener('click', getFavIngData);
-// const promisesIng = makePromises();
 
 getFavIngData();
 
-// Генеруємо проміси ing.
 function makePromises() {
   const favIngs = JSON.parse(localStorage.getItem(LS_KEY_FAV_ING));
-  console.log(favIngs);
-  // const promises = favIngs.reduce((acc, id)=> {return acc.push(apiService.fetchDataByIdIngr(id))}, [])
   const promises = favIngs.reduce((acc, id) => {
     acc.push(apiService.fetchDataByIdIngr(id));
     return acc;
   }, []);
-  console.log(promises);
   return promises;
 }
 
@@ -32,8 +25,6 @@ async function waitAllPromises(promisesIng) {
 }
 
 function renderFavIng(data) {
-  console.log(data);
-
   const galleryItems = data
     .map(elem => {
       return `
@@ -60,10 +51,8 @@ function renderFavIng(data) {
 
     if (elem.classList.contains('js-learn-more-ing')) {
       handleOpenModalIngridientsFav(e);
-      console.log('click on "Learn more ing"');
     }
     if (elem.classList.contains('js-remove-ing-card')) {
-      console.log('click on "Remove from button"');
       removeFromFavIngs(e);
     }
   });

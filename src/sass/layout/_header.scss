@@ -107,6 +107,9 @@ header {
 
 .dark .input {
   @include fonts($fw: 400, $fs: 14px, $lh: 1.333, $color: var(--white-cl));
+  &::placeholder {
+    color: #bbbdc1;
+  }
 
 }
 

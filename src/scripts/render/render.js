@@ -25,18 +25,18 @@ export default class Render {
                                         </button>
                 </div>
             </div>`;
-        })
-            .join('');
+      })
+      .join('');
 
-        galleryEl.insertAdjacentHTML('beforeend', galleryItems);
-    }
+    galleryEl.insertAdjacentHTML('beforeend', galleryItems);
+  }
 
-    createNotFoundMarkup() {
-        return `<div class="not-found">
+  createNotFoundMarkup() {
+    return `<div class="not-found">
         <h2 class="not-found__title">Sorry, we didn't find any cocktail for you</h2>
         <svg class="not-found__icon">
         <use href="${icons}#icon-sorry"></use>
         </svg>
         </div>`;
-    }
+  }
 }
