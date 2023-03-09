@@ -31,7 +31,6 @@ export default class FavGallery {
 
   async renderByLetter(letter) {
     const favIds = JSON.parse(localStorage.getItem('favIds') ?? '{}');
-    console.log(favIds);
 
     for (let id in favIds) {
       const drink = await apiService.fetchDataById(id);
@@ -70,7 +69,6 @@ export default class FavGallery {
 
   addToFavorite(addToBtn) {
     const id = addToBtn.dataset.id;
-    console.log(id);
 
     let favIds = JSON.parse(localStorage.getItem('favIds'));
 
@@ -87,14 +85,6 @@ export default class FavGallery {
       return
     }
   }
-
-  //   const favIds = JSON.parse(localStorage.getItem('favIds') ?? '[]');
-  //   if (!favIds.includes(id)) {
-  //     console.log();
-  //     favIds.push(id);
-  //     localStorage.setItem('favIds', JSON.stringify(favIds));
-  //   }
-  // }
 
   removeFromFavorite(btnEl) {
     const id = btnEl.dataset.id;
