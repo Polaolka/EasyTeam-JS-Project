@@ -1,28 +1,61 @@
-import icons from "../../images/icons.svg"
+import icons from '../../images/icons.svg';
+
 const galleryEl = document.querySelector('.gallery__wrapper');
+import icons from '../../images/icons.svg';
 
 export default class Render {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 14dc448f02859a315d1df6d34edac5054533d105
+  constructor() {}
+  // Рендеримо галерею
+  renderGallery(data) {
+    const galleryItems = data
+      .map(({ strDrinkThumb, strDrink, idDrink }) => {
+        const lockalStorageItems = JSON.parse(localStorage.getItem('favIds'));
+        const isInLS = lockalStorageItems.includes(idDrink);
+        const className = isInLS
+          ? 'fav-buttons__btn--remove'
+          : 'buttons__btn--add-to';
+        const btnText = isInLS
+          ? `Remove<svg class="buttons__icon"><usehref="${icons}#icon-heart_fill"></usehref=></svg>`
+          : `Add to<svgclass="buttons__icon"><use href="${icons}#heart"></use></>`;
+<<<<<<< HEAD
+=======
+=======
     constructor() { }
     // Рендеримо галерею
     renderGallery(data) {
         const galleryItems = data.map(({ strDrinkThumb, strDrink, idDrink }) => {
-            let lockalStorageItems = JSON.parse(localStorage.getItem('favIds'));
+            const lockalStorageItems = JSON.parse(localStorage.getItem('favIds'));
 
-            if (lockalStorageItems === null) lockalStorageItems = [];
+            if(!lockalStorageItems) {
+                localStorage.setItem('favIds', JSON.stringify([]));
+              }
+
 
             const isInLS = lockalStorageItems.includes(idDrink);
             const className = isInLS ? 'fav-buttons__btn--remove' : 'buttons__btn--add-to';
             const btnText = isInLS
-                ? `Remove<svg class="buttons__icon"><use href="${icons}#icon-heart_fill"></use></svg>`
-                : `Add to<svg class="buttons__icon"><use href="${icons}#heart"></use></>`;
+                ? `Remove<svg class="buttons__icon"><usehref="${icons}#heart"></usehref=></svg>`
+                : `Add to<svgclass="buttons__icon"><use href="${icons}#heart"></use></>`;
+>>>>>>> main
+>>>>>>> 14dc448f02859a315d1df6d34edac5054533d105
 
-            return `<div class="card" id="${idDrink}">
+        return `<div class="card" id="${idDrink}">
                 <img src="${strDrinkThumb}" alt="${strDrink}" class="card__img">
                 <h3 class="card__title">${strDrink}</h3>
                 <div class="buttons">
                     <button type="button" class="buttons__btn buttons__btn--learn-more">Learn more</button>
                     <button type="button" class="buttons__btn ${className}" data-id="${idDrink}">${btnText}
-                                        </button>
+                    <svg class="buttons__icon">
+                        <use href="${icons}#heart"></use>
+                    </svg>
+                    <svg class="buttons__icon buttons__icon-fill">
+                        <use href="${icons}#icon-heart_fill"></use>
+                    </svg>
+                    </button>
                 </div>
             </div>`;
       })
