@@ -9,6 +9,7 @@ const el = {
   selectidLetterMbBox: document.querySelector('.selectid-letter-mb-box'),
   selectidLetterMb: document.querySelector('.selectid-letter-mb'),
   galleryTitle: document.querySelector('.gallery__title'),
+  inputEl: document.querySelector('.input'),
 };
 
 const gallery = new Gallery();
