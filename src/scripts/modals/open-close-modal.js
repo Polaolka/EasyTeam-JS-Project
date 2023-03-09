@@ -26,10 +26,6 @@ export async function handleOpenCloseModal(e) {
       if (itemEl.classList.contains('ingridients-link')) {
         handleOpenModalIngridients(e);
       }
-      document
-        .querySelector('.button-add')
-        .addEventListener('click', e => console.log('click'));
-      return;
     });
 
   const closeModal = document.querySelector('.close-modal');
