@@ -1,7 +1,7 @@
 import icons from '../../images/icons.svg';
 const modalCoctails = document.querySelector('.modal-coctails');
 
-export function renderModalCoctails(data) {
+export function renderModalCoctails({ strDrinkThumb, strDrink, idDrink }) {
 
   let lockalStorageItems = JSON.parse(localStorage.getItem('favIds'));
 
