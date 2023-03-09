@@ -6,7 +6,7 @@ const options = {
   rootMargin: '100px',
   threshold: 1.0,
 };
-console.log('1');
+
 const isTeamListenerActive = teamRef.dataset.event;
 
 const observer = new IntersectionObserver(
