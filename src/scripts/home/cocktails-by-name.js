@@ -13,6 +13,7 @@ async function handleInputEvent(event) {
   let cocktailName = inputEl.value.trim();
   event.preventDefault();
   gallery.clearGallery();
+  inputEl.placeholder = cocktailName;
 
   if (cocktailName) {
     gallery.numberOfItemsPerPage();

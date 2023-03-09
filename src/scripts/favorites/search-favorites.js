@@ -10,11 +10,9 @@ function handleSearchFaforitSubmit(event) {
 
     event.preventDefault();
     let cocktailName = inputEl.value.trim();
-    // console.log(cocktailName);
     document.location.assign('http://localhost:1234');
 
     localStorage.setItem(LS_SEARCH, JSON.stringify(cocktailName));
     const test = JSON.parse(localStorage.getItem(LS_SEARCH));
-    // console.log(test);
 }
 
