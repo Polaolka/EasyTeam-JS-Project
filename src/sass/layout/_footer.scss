@@ -206,7 +206,7 @@ img {
   &__input.is-invalid {
     border-color: red;
   }
-  
+
   &__input.is-valid {
     border-color: green;
   }
@@ -333,11 +333,11 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+  }
 
   &__copyright {
     margin-bottom: 10px;
-  
+
     @media screen and (min-width: 768px) {
       margin-bottom: 0;
       margin-right: 3px;
@@ -348,7 +348,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-  
+
     &--link {
       margin-left: 3px;
       text-decoration: underline;

@@ -24,13 +24,13 @@ export default class ApiService {
     const response = data.drinks;
     return response;
   }
-  async fetchDataByIngr(query) {
-    const { data } = await axios.get(`${BASE_URL}search.php?i=${query}`);
+  async fetchDataByIngr(id) {
+    const { data } = await axios.get(`${BASE_URL}search.php?i=${id}`);
     const response = data.ingredients;
     return response;
   }
   async fetchDataByIdIngr(query) {
-    const { data } = await axios.get(`${BASE_URL}lookup.php?iid=${query}`);
+    const { data } = await axios.get(`${BASE_URL}lookup.php?iid=${query}`);// поправить
     const response = data.ingredients;
     return response;
   }
