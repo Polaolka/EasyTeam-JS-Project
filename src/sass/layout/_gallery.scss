@@ -34,6 +34,8 @@
   }
 
   &__wrapper {
+    min-height: 480px; //for sceleton
+
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -66,6 +68,7 @@
   //   transform: translateY(-5px);
   //   box-shadow: 0px 10px 20px 2px rgba(255,123,0,0.5);
   // }
+  background-color: #fff;
 
   @include mq(tablet) {
     width: 335px;
@@ -76,6 +79,12 @@
     padding-bottom: 28px;
   }
 
+  &__img {
+    min-width: 278px;
+    min-height: 278px;
+  }
+
+  // .card__title
 
   &__title {
     margin-top: 48px;

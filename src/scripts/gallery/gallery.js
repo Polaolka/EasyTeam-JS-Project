@@ -16,7 +16,7 @@ const cocktailNameFromFavorites = JSON.parse(localStorage.getItem(LS_SEARCH));
 
 const apiService = new ApiService();
 const render = new Render();
-const favGallery = new FavGallery()
+const favGallery = new FavGallery();
 
 export default class Gallery {
   constructor() {
@@ -156,9 +156,12 @@ export default class Gallery {
       return
     }
     this.currentPage = pageNum;
+    console.log('pageNum: ', pageNum);
 
     const prevRange = (pageNum - 1) * this.paginationLimit;
+    console.log('prevRange: ', prevRange);
     const currRange = pageNum * this.paginationLimit;
+    console.log('currRange: ', currRange);
 
     this.setPaginationArrowsStatus();
 
