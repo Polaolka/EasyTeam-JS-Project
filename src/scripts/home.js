@@ -1,4 +1,6 @@
 import './home/cocktails-by-name';
+import './render/render'; //не нашёл где в другом месте они подключаются
+import './gallery/gallery'; // не нашёл где в другом месте они подключаются
 import './common/dropdown-menu';
 import './common/dropdown-menu-mob';
 import './common/mobile-menu';
@@ -11,5 +13,4 @@ import './common/input-validation';
 // import './common/footer';
 
 import './common/add-to-favorites';
-import './home/search-by-LS';
 import './modals/team-modal';

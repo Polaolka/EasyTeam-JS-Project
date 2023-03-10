@@ -34,6 +34,8 @@
   }
 
   &__wrapper {
+    min-height: 480px; //for sceleton
+
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -58,6 +60,8 @@
   border-radius: 4px;
   overflow: hidden;
 
+  background-color: #fff;
+
   @include mq(tablet) {
     width: 335px;
     padding-bottom: 19px;
@@ -68,6 +72,8 @@
   }
 
   &__img {
+    min-width: 278px;
+    min-height: 278px;
   }
 
   // .card__title

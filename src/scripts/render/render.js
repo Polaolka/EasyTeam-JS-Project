@@ -1,20 +1,28 @@
 import icons from '../../images/icons.svg';
+import Gallery from '../gallery/gallery';
 
 const galleryEl = document.querySelector('.gallery__wrapper');
-import icons from '../../images/icons.svg';
 
 export default class Render {
-  constructor() {}
+  constructor() { }
   // Рендеримо галерею
   renderGallery(data) {
+    const gallery = new Gallery();
+    // let sceletonMarkup = '';
+    // const itemsPerPage = gallery.numberOfItemsPerPage();
+
+    // for (let i = 0; i < itemsPerPage; i += 1) {
+    //   sceletonMarkup += this.createSceletonMarkup();
+    // }
+    // galleryEl.insertAdjacentHTML('beforeend', sceletonMarkup);
+
     const galleryItems = data
       .map(({ strDrinkThumb, strDrink, idDrink }) => {
 
         let lockalStorageItems = JSON.parse(localStorage.getItem('favIds'));
+        if (lockalStorageItems === null) lockalStorageItems = [];
 
-            if (lockalStorageItems === null) lockalStorageItems = [];
-
-            const isInLS = lockalStorageItems.includes(idDrink);
+        const isInLS = lockalStorageItems.includes(idDrink);
         const className = isInLS
           ? 'fav-buttons__btn--remove'
           : 'buttons__btn--add-to';
@@ -40,6 +48,7 @@ export default class Render {
       })
       .join('');
 
+    gallery.clearGallery();
     galleryEl.insertAdjacentHTML('beforeend', galleryItems);
   }
 
@@ -50,5 +59,16 @@ export default class Render {
         <use href="${icons}#icon-sorry"></use>
         </svg>
         </div>`;
+  }
+
+  createSceletonMarkup() {
+    return `<div class="card sceleton--card">
+                <div class="sceleton sceleton--img"></div>
+                <h3 class="card__title sceleton sceleton--title"></h3>
+                <div class="buttons">
+                    <button type="button" class="buttons__btn sceleton sceleton--btn"> </button>
+                    <button type="button" class="buttons__btn sceleton sceleton--btn"> </button>
+                </div>
+            </div>`;
   }
 }
