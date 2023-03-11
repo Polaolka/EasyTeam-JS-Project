@@ -9,6 +9,7 @@ const favCocktails = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
 
 // const gallery = new Gallery();
 const render = new Render();
+// const gallery = new Gallery();
 const apiService = new ApiService();
 
 const favWrapper = document.querySelector('.fav-cocktails__box');
@@ -51,8 +52,14 @@ export default class FavGallery {
     const promises = this.makePromises();
     const data = await this.waitAllPromises(promises);
     const flatData = data.flatMap(i => i);
+    console.log(flatData);
     return flatData;
     // renderFavIng(flatData);
+  }
+  async buildMarkUp() {
+    const gallery = new Gallery();
+    const data = await getFavCocktData();
+    gallery.setCurrentPage(1, data);
   }
 
   // async renderFavCockt() {
@@ -189,3 +196,5 @@ export default class FavGallery {
 //       </div>`;
 //   }
 // }
+const favGallery = new FavGallery();
+favGallery.buildMarkUp();
