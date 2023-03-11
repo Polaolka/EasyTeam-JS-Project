@@ -18,51 +18,66 @@ export function addToFavHandler() {
 
 }
 
-// export function addToFavHandlerN(e) {
-//     if (!e.target.classList.contains('js-cockt-add') 
-//     && !e.target.classList.contains('js-cockt-remove') 
-//     && e.target.classList.contains('close-modal')) {
-//       return;
+export function addToFavHandlerN(e) {
+    if (!e.target.classList.contains('js-cockt-add') 
+    && !e.target.classList.contains('js-cockt-remove')) {
+      return;
+    }
+    const favCocktails = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
+    if (e.target.classList.contains('js-cockt-add')) {
+      addToFavCocktails(e);
+      return
+    }
+  
+    if (e.target.classList.contains('js-cockt-remove')) {
+  
+      let favCocktailID = e.target.closest('.js-card').id;
+  
+      const idx = favCocktails.findIndex(ing => ing === favCocktailID);
+  
+      favCocktails.splice(idx, 1); //  переписати на сорт!!!!
+  
+      localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify(favCocktails));
+      e.target.classList.add('js-cockt-add');
+      e.target.classList.remove('js-cockt-remove');
+      e.target.textContent = 'Add to';
+      return;
+    }
+  }
+  function addToFavCocktails(e) {
+    const favCocktails = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
+    let favCocktailID = e.target.closest('.js-card').id;
+    favCocktails.push(favCocktailID);
+    localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify(favCocktails));
+    e.target.classList.add('js-cockt-remove');
+    e.target.classList.remove('js-cockt-add');
+    e.target.textContent = 'Remove';
+  }
+
+  
+
+
+//   e => {
+//     const elem = e.target;
+  
+//     const addToBtn = elem.closest('.buttons__btn--add-to');
+//     const removeBtn = elem.closest('.fav-buttons__btn--remove')
+//     if (elem.classList.contains('buttons__btn--learn-more')) {
+//       handleOpenCloseModal(e);
 //     }
+//     if (addToBtn) {
+//       addToBtn.classList.remove('buttons__btn--add-to');
+//       addToBtn.classList.add('fav-buttons__btn--remove');
   
-//     if (e.target.classList.contains('js-cockt-add')) {
-//       const favCocktails = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
-  
-//       if(!favCocktails) {
-//         localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify([]));
-//         addToFavCoctails(e);
-//         return
-//       }
-//       addToFavCoctails(e);
-//       return
+//       addToBtn.innerHTML = `Remove<svg class="buttons__icon"><use href="${icons}#icon-heart_fill"></use></svg>`;
+//       favGallery.addToFavorite(addToBtn);
 //     }
+//     if (removeBtn) {
+//       console.log('removeBtn: ', removeBtn);
+//       removeBtn.classList.remove('fav-buttons__btn--remove')
+//       removeBtn.classList.add('buttons__btn--add-to');
   
-//     if (e.target.classList.contains('js-cockt-remove')) {
-//       const favCocktails = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
-  
-//       let favCocktailID = e.target.closest('.js-card').id;
-  
-//       const idx = favCocktails.findIndex(ing => ing === favCocktailID);
-  
-//       favCocktails.splice(idx, 1); //  переписати на сорт!!!!
-  
-//       localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify(favCocktails));
-//       e.target.classList.add('js-cockt-add');
-//       e.target.classList.remove('js-cockt-remove');
-//       e.target.textContent = 'Add to';
-//       return;
+//       removeBtn.innerHTML = `Add to<svg class="buttons__icon"><use href="${icons}#heart"></use></>`;
+//       favGallery.removeFromFavoriteFromGallery(removeBtn);
 //     }
-//     // if (e.target.classList.contains('close-modal')) {
-//     //   body.removeEventListener('click', handleClickAddToFavIngr);
-//     //   return
-//     // }
-//   }
-//   function addToFavCocktails(e) {
-//     const favCocktails = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
-//     let favCocktailID = e.target.closest('.js-card').id;
-//     favCocktails.push(favCocktailID);
-//     localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify(favCocktails));
-//     e.target.classList.add('js-cockt-remove');
-//     e.target.classList.remove('js-cockt-add');
-//     e.target.textContent = 'Remove';
 //   }

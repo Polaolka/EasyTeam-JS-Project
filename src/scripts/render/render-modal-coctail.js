@@ -1,7 +1,19 @@
 import icons from '../../images/icons.svg';
 const modalCoctails = document.querySelector('.modal-coctails');
+const LS_KEY_FAV_COCKT = 'Fav-Cocktails';
 
 export function renderModalCoctails(data) {
+  let lockalStorageItems = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
+
+  const IdCockt = data.idDrink;
+  const isInLS = lockalStorageItems.includes(IdCockt);
+
+  const className = isInLS
+  ? 'button-add js-cockt-remove-modal'
+  : 'button-add js-cockt-add-modal';
+const btnText = isInLS
+  ? `Remove from favovorites`
+  : `Add to favovorites`;
   const markupModalCoctail = `
   <svg class="close-modal" width="32" height="32">
   <use href="${icons}#icon-close-modal"></use>
@@ -19,10 +31,13 @@ export function renderModalCoctails(data) {
 
     <h3 class="ingridients">INGREDIENTS</h3>
     <h3 class="ingridients-per">Per cocktail</h3>
+
     <ul class="ingridients-list">
       ${templateIngridients(data)}
-</ul>
-      <button type="button" class="button-add">Add to favorite</button>
+    </ul>
+
+    <button type="button js-card" id="${data.idDrink}" class="${className}">${btnText}</button>
+  
       `;
   modalCoctails.innerHTML = markupModalCoctail;
 }
@@ -40,8 +55,8 @@ function templateIngridients(data) {
           class="ingridients-link"
           target="_blank"
           rel="noreferrer noopener"
-          >✶ ${data[key2]} ${data[key1]}a
-        >`;
+          >✶ ${data[key2]} ${data[key1]}</a>
+          </li>`;
   }
 
   return markup;
