@@ -43,12 +43,19 @@ export function addToFavHandlerN(e) {
 }
 function addToFavCocktails(e) {
   const favCocktails = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
-  let favCocktailID = e.target.closest('.js-card').id;
-  favCocktails.push(favCocktailID);
-  localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify(favCocktails));
-  e.target.classList.add('js-cockt-remove');
-  e.target.classList.remove('js-cockt-add');
-  e.target.innerHTML = `Remove<svg class="buttons__icon"><use href="${icons}#icon-heart_fill"></use></svg>`;
+  if (!favCocktails) {
+    localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify([]));
+    addToFavorites(favCocktails, e);
+    return;
+  }
+  addToFavorites(favCocktails, e);
+  return;
+  // let favCocktailID = e.target.closest('.js-card').id;
+  // favCocktails.push(favCocktailID);
+  // localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify(favCocktails));
+  // e.target.classList.add('js-cockt-remove');
+  // e.target.classList.remove('js-cockt-add');
+  // e.target.innerHTML = `Remove<svg class="buttons__icon"><use href="${icons}#icon-heart_fill"></use></svg>`;
 }
 
 export function removeFromFavHandler(e) {
@@ -65,4 +72,14 @@ export function removeFromFavHandler(e) {
   let favCocktailID = e.target.closest('.js-card').id;
   const filtred = favCocktails.filter(i => i !== favCocktailID);
   localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify(filtred));
+ }
+
+ function addToFavorites(favCocktails, e) {
+  // const favCocktails = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
+  let favCocktailID = e.target.closest('.js-card').id;
+  favCocktails.push(favCocktailID);
+  localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify(favCocktails));
+  e.target.classList.add('js-cockt-remove');
+  e.target.classList.remove('js-cockt-add');
+  e.target.innerHTML = `Remove<svg class="buttons__icon"><use href="${icons}#icon-heart_fill"></use></svg>`;
  }

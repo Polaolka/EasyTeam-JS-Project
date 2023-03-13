@@ -4,6 +4,11 @@ const LS_KEY_FAV_COCKT = 'Fav-Cocktails';
 
 export function renderModalCoctails(data) {
   let lockalStorageItems = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
+  // !!! не можна прибирати цю перевірку
+  if (!lockalStorageItems) {
+    localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify([]));
+    lockalStorageItems = [];
+  }
 
   const IdCockt = data.idDrink;
   const isInLS = lockalStorageItems.includes(IdCockt);
