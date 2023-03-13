@@ -20,8 +20,6 @@
   top: 16px;
   right: 16px;
 
-  padding: 8px;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,7 +111,6 @@
   @include mq(tablet) {
     opacity: 1;
     width: 715px;
-    // margin-bottom: 28px;
   }
 }
 
@@ -134,7 +131,9 @@
 .component-list-item {
   @include fonts($fw: 400, $fs: 16px, $lh: 1.6, $color: var(--modal-text-cl));
 }
-
+.component-btn-wraper {
+  width: 100%;
+}
 .button-components-add {
   min-width: 185px;
   min-height: 48px;
@@ -157,6 +156,7 @@
     cursor: pointer;
   }
   @include mq(tablet) {
-    margin-right: auto;
+    margin-left: auto;
+    display: block;
   }
 }

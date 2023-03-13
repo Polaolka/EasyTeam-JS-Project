@@ -1,8 +1,6 @@
 import icons from '../../images/icons.svg';
 import { handleClickAddToFavIngr } from '../favorites/favorite-ing';
-import { checkFavIng } from "../favorites/favorite-ing";
-
-// import { checkFavIng } from '../favorites/favorite-ing';
+import { checkFavIng } from '../favorites/favorite-ing';
 
 const modalIngEl = document.querySelector('.components');
 const body = document.querySelector('body');
@@ -46,10 +44,10 @@ export function renderModalIngr(data) {
       }
       
     </ul>
-    <button type="button" class="button-components-add ${classIng}">${textContentIng}</button>
+    <div class="component-btn-wraper"><button type="button" class="button-components-add ${classIng}">${textContentIng}</button></div>
   </div>
   </div>`;
-  // console.log(markupModalIng);
+
   modalIngEl.innerHTML = markupModalIng;
 
   body.addEventListener('click', handleClickAddToFavIngr);
