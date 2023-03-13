@@ -10,7 +10,7 @@ import './common/theme-toggler';
 import './modals/open-close-modal';
 import './common/scroll-too-top';
 import './common/input-validation';
-// import './common/footer';
+import './home/home-load';
 
 import './common/add-to-favorites';
 import './modals/team-modal';

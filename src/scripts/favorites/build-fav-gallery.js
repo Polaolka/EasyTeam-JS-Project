@@ -1,34 +1,37 @@
 import ApiService from '../api/apiService';
 import Render from '../render/render';
-import { handleOpenCloseModalFavorite } from '../modals/open-close-modal';
-import icons from '../../images/icons.svg';
-import Gallery from "../gallery/gallery";
-import { addToFavHandlerN } from '../common/add-to-favorites';
+import { handleOpenCloseModalInFav } from '../modals/open-close-modal';
+import { removeFromFavHandler } from '../common/add-to-favorites';
+
 const LS_KEY_FAV_COCKT = 'Fav-Cocktails';
-const favCocktails = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
 
-// const gallery = new Gallery();
-const render = new Render();
-// const gallery = new Gallery();
-const apiService = new ApiService();
-
+const galleryEl = document.querySelector('.gallery__wrapper');
 const favWrapper = document.querySelector('.fav-cocktails__box');
 const favTitle = document.querySelector('.fav-cocktails__title');
+
+const render = new Render();
+const apiService = new ApiService();
+
 export default class FavGallery {
   constructor() {
-    // this.gallery = new Gallery();
-  }
-  // gallery = new Gallery();
-  async render() {
-    const favCocktails = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
-    if (!favCocktails)
-      localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify([]));
 
-    if (favCocktails.length === 0) {
+  }
+
+  async renderFav() {
+    const favCocktails = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
+
+    if (!favCocktails || favCocktails.length === 0) {
+      localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify([]));
       const notFoundBlock = render.createNotFoundMarkup();
       favTitle.style.display = 'none';
-      favWrapper.insertAdjacentHTML('beforeend', notFoundBlock);
+      favWrapper.innerHTML = notFoundBlock;
       return;
+    }
+    if (favCocktails.length > 0) {
+      const data = await this.getFavCocktData();
+      render.renderGallery(data);
+      galleryEl.addEventListener('click', removeFromFavHandler);
+      galleryEl.addEventListener('click', handleOpenCloseModalInFav)
     }
   }
   makePromises() {
@@ -41,39 +44,46 @@ export default class FavGallery {
   }
 
   // Чекаємо виконання всіх промісів з fav ing
-  async waitAllPromises(promisesCocktails) {
+  async waitAllPromises() {
+    const promisesCocktails = await this.makePromises();
     const pr = Promise.all(promisesCocktails).catch(error =>
       console.log(error)
     );
     return pr;
   }
 
-  async getFavCocktData() {
-    const promises = this.makePromises();
-    const data = await this.waitAllPromises(promises);
+   async getFavCocktData() {
+    const data = await this.waitAllPromises();
     const flatData = data.flatMap(i => i);
-    console.log(flatData);
     return flatData;
-    // renderFavIng(flatData);
   }
-  async buildMarkUp() {
-    const gallery = new Gallery();
-    const data = await getFavCocktData();
-    gallery.setCurrentPage(1, data);
-  }
-
-  // async renderFavCockt() {
-  //   this.gallery.clearGallery();
-  //   const data = await this.getFavCocktData();
-  //   this.gallery.numberOfItemsPerPage();
-  //   this.gallery.setCurrentPage(1, data);
-
-
-  // }
-
-  // favTitle.style.display = 'block';
-  //     this.addListeners();
 }
+
+// const favGallery = new FavGallery();
+// favGallery.renderFav();
+// console.log('5');
+// async function handleFavLoad() {
+//   console.log('7');
+//   favGallery.render();
+// }
+// handleFavLoad();
+
+// async buildMarkUp() {
+//   const gallery = new Gallery();
+//   const data = await this.getFavCocktData();
+//   gallery.setCurrentPage(1, data);
+// }
+
+// async renderFavCockt() {
+//   this.gallery.clearGallery();
+//   const data = await this.getFavCocktData();
+//   this.gallery.numberOfItemsPerPage();
+//   this.gallery.setCurrentPage(1, data);
+
+// }
+
+// favTitle.style.display = 'block';
+//     this.addListeners();
 
 // export default class FavGallery {
 //   constructor() {}
@@ -196,5 +206,3 @@ export default class FavGallery {
 //       </div>`;
 //   }
 // }
-const favGallery = new FavGallery();
-favGallery.buildMarkUp();
