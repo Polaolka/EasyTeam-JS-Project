@@ -1,1 +1,0 @@
-{"mappings":"ifAEmB,IAAI,EAFvBA,EAAA,SAEuBC,UACZC,S","sources":["src/scripts/favorites/favorite-coctails.js"],"sourcesContent":["import FavGallery from \"./build-fav-gallery\";\n\nconst favGallery = new FavGallery();\nfavGallery.render();"],"names":["parcelRequire","default","render"],"version":3,"file":"favorite.656e2ff4.js.map"}
