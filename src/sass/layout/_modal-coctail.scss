@@ -5,8 +5,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  // background: rgba(0, 0, 0, 0.3);
-  // pointer-events: ;
+
   backdrop-filter: blur(10px);
 
   opacity: 1;
@@ -59,8 +58,6 @@
   position: absolute;
   top: 16px;
   right: 16px;
-
-  // padding: 8px;
 
   display: flex;
   align-items: center;
@@ -181,5 +178,6 @@
 
   @include mq(tablet) {
     order: 4;
+    margin-left: auto;
   }
 }
