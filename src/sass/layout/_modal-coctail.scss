@@ -60,7 +60,7 @@
   top: 16px;
   right: 16px;
 
-  padding: 8px;
+  // padding: 8px;
 
   display: flex;
   align-items: center;
@@ -109,7 +109,7 @@
   height: 280px;
   border-radius: 4px;
   margin-bottom: 22px;
-  // border: 1px solid tomato;
+
   @include mq(tablet) {
     width: 288px;
     height: 320px;
