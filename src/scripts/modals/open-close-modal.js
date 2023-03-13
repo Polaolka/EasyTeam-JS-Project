@@ -75,7 +75,7 @@ function hendleInModalCocktClick(e) {
 
     el.forEach(e => {
       if (e.id === favCocktailID) {
-        rerenderAddToFavBtn(e);
+        rerenderRemoveFromFavBtn(e);
       }
     });
 
@@ -114,7 +114,7 @@ export async function handleOpenCloseModalInFav(e) {
   });
 }
 
-function hendleInModalCocktClickFav(e) {перепи
+function hendleInModalCocktClickFav(e) {
   const isAddToFavBtn = e.target.classList.contains('js-cockt-add-modal');
   const isRemoveFromFavBtn = e.target.classList.contains(
     'js-cockt-remove-modal'
@@ -149,8 +149,10 @@ function hendleInModalCocktClickFav(e) {перепи
 function rerenderAddToFavBtn(e) {
   let curentBtn;
   curentBtn = e.querySelector('.js-cockt-add');
-  curentBtn.classList.toggle('js-cockt-remove');
+  console.log(curentBtn);
   curentBtn.classList.toggle('js-cockt-add');
+  curentBtn.classList.toggle('js-cockt-remove');
+
   curentBtn.innerHTML = `Remove<svg class="buttons__icon"><use href="${icons}#icon-heart_fill"></use></svg>`;
 }
 

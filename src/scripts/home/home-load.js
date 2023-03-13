@@ -14,7 +14,7 @@ handleHomeLoad();
 async function handleHomeLoad() {
   if (cocktailNameFromFavorites) {
     gallery.clearGallery();
-    inputEl.placeholder = cocktailNameFromFavorites;
+    // inputEl.placeholder = cocktailNameFromFavorites;
     gallery.numberOfItemsPerPage();
     const data = await gallery.getDataByName(cocktailNameFromFavorites);
     gallery.setCurrentPage(1, data);

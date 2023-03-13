@@ -2,6 +2,7 @@ import ApiService from '../api/apiService';
 import { renderModalIngr } from '../render/render-modal-ingr';
 import { handleClickAddToFavIngr } from '../favorites/favorite-ing';
 import { renderModalWithoutIng } from '../render/render-modal-ingr';
+import { getFavIngData } from '../render/render-fav-ing'
 
 const backdrop = document.querySelector('.backdrop');
 const modalCoctailsEl = document.querySelector('.modal-coctails');
@@ -14,7 +15,6 @@ export async function handleOpenModalIngridients(e) {
   e.preventDefault();
   modalCoctailsEl.classList.add('is-hidden');
 
-  console.log(e.target.closest('li'));
   const query = e.target.closest('li').dataset.name;
 
   const data = await apiIng.fetchDataByIngr(query);
@@ -38,22 +38,22 @@ export async function handleOpenModalIngridients(e) {
 }
 
 export async function handleOpenModalIngridientsFav(e) {
-  e.preventDefault();
+  // e.preventDefault();
+
   backdrop.classList.remove('is-hidden');
   modalIng.classList.remove('is-hidden');
 
   const query = e.target.closest('.favorite').id;
-  console.log(query);
 
   const data = await apiIng.fetchDataByIdIngr(query);
-  console.log(data[0]);
-
   renderModalIngr(data[0]);
 
-  const closeModalIn = document.querySelector('.close-modal2');
-  closeModalIn.addEventListener('click', () => {
+  const closeModalInFav = document.querySelector('.close-modal2-fav');
+  closeModalInFav.addEventListener('click', () => {
     modalIng.classList.add('is-hidden');
     backdrop.classList.add('is-hidden');
+    getFavIngData();
+    // return
   });
 
   body.addEventListener('click', handleClickAddToFavIngr);
