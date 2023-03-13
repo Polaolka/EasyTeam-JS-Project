@@ -1,6 +1,7 @@
 import icons from '../../images/icons.svg';
 import Gallery from '../gallery/gallery';
 
+const LS_KEY_FAV_COCKT = 'Fav-Cocktails';
 const galleryEl = document.querySelector('.gallery__wrapper');
 
 export default class Render {
@@ -19,23 +20,27 @@ export default class Render {
     const galleryItems = data
       .map(({ strDrinkThumb, strDrink, idDrink }) => {
 
-        let lockalStorageItems = JSON.parse(localStorage.getItem('favIds'));
-        if (lockalStorageItems === null) lockalStorageItems = [];
+        // let lockalStorageItems = JSON.parse(localStorage.getItem('favIds'));
+        let lockalStorageItems = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
+        if (!lockalStorageItems) {
+          localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify([]));
+          lockalStorageItems = [];}
 
         const isInLS = lockalStorageItems.includes(idDrink);
-        const className = isInLS
-          ? 'fav-buttons__btn--remove'
-          : 'buttons__btn--add-to';
-        const btnText = isInLS
-          ? `Remove<svg class="buttons__icon"><usehref="${icons}#icon-heart_fill"></usehref=></svg>`
-          : `Add to<svgclass="buttons__icon"><use href="${icons}#heart"></use></>`;
 
-        return `<div class="card" id="${idDrink}">
+        const className = isInLS
+          ? 'fav-buttons__btn--remove js-cockt-remove'
+          : 'buttons__btn--add-to js-cockt-add';
+        const btnText = isInLS
+          ? `Remove<svg class="buttons__icon"><use href="${icons}#icon-heart_fill"></use></svg>`
+          : `Add to<svgclass="buttons__icon"><use href="${icons}#heart"></use></svg>`;
+
+        return `<div class="card js-card" id="${idDrink}">
                 <img src="${strDrinkThumb}" alt="${strDrink}" class="card__img">
                 <h3 class="card__title">${strDrink}</h3>
                 <div class="buttons">
                     <button type="button" class="buttons__btn buttons__btn--learn-more">Learn more</button>
-                    <button type="button" class="buttons__btn ${className}" data-id="${idDrink}">${btnText}
+                    <button type="button" class="buttons__btn ${className} " data-id="${idDrink}">${btnText}
                     <svg class="buttons__icon">
                         <use href="${icons}#heart"></use>
                     </svg>
@@ -72,3 +77,4 @@ export default class Render {
             </div>`;
   }
 }
+      
