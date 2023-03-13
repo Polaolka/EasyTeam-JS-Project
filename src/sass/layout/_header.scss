@@ -3,7 +3,6 @@ header {
   transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
 .header-list {
   margin: 0;
   padding: 0;
@@ -87,7 +86,7 @@ header {
 }
 
 .input {
-  padding-left: 65px;
+  padding-left: 10px;
   border: 1px solid var(--main-text-cl);
   border-radius: 0 var(--b-radius) var(--b-radius) 0;
   outline: transparent;

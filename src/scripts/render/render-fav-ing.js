@@ -2,12 +2,18 @@ import ApiService from '../api/apiService';
 import icons from '../../images/icons.svg';
 import { handleOpenModalIngridientsFav } from '../home/open-close-modalIng';
 const LS_KEY_FAV_ING = 'Fav-Ingredients';
+const notFaundCoctail = `<div class="not-found">
+<h2 class="not-found__title">Sorry, we didn't find any cocktail for you</h2>
+<svg class="not-found__icon">
+  <use href="${icons}#icon-sorry"></use>
+</svg>
+</div>`;
 
 
 const favIngWrapper = document.querySelector('.fav-ing-wrapper');
 const apiService = new ApiService();
 
-getFavIngData();
+
 
 function makePromises() {
   const favIngs = JSON.parse(localStorage.getItem(LS_KEY_FAV_ING));
@@ -24,7 +30,13 @@ async function waitAllPromises(promisesIng) {
   return pr;
 }
 
+
 function renderFavIng(data) {
+
+  if (data.length === 0) {
+    favIngWrapper.innerHTML = notFaundCoctail;
+    console.log(')');
+  }
   const galleryItems = data
     .map(elem => {
       return `
@@ -59,13 +71,12 @@ function renderFavIng(data) {
 }
 
 // Отримуємо данні з fav ing
-async function getFavIngData() {
+export async function getFavIngData() {
   const promises = makePromises();
   const data = await waitAllPromises(promises);
   const flatData = data.flatMap(i => i);
   renderFavIng(flatData);
 }
-
 
 function removeFromFavIngs(e) {
   const favIngs = JSON.parse(localStorage.getItem(LS_KEY_FAV_ING));

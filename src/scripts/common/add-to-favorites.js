@@ -45,6 +45,7 @@ function addToFavCocktails(e) {
   const favCocktails = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
   if (!favCocktails) {
     localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify([]));
+    const favCocktails = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
     addToFavorites(favCocktails, e);
     return;
   }
@@ -78,6 +79,7 @@ export function removeFromFavHandler(e) {
   // const favCocktails = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
   let favCocktailID = e.target.closest('.js-card').id;
   favCocktails.push(favCocktailID);
+
   localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify(favCocktails));
   e.target.classList.add('js-cockt-remove');
   e.target.classList.remove('js-cockt-add');

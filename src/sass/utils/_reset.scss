@@ -4,15 +4,31 @@ h3,
 h4,
 h5,
 h6,
-p {
+p,
+li,
+a {
+  text-decoration: none;
   margin: 0;
+}
+
+a {
+  cursor: pointer;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 // Для контентних зображень
 img {
   display: block;
+  object-fit: cover;
+  object-position: center;
   max-width: 100%;
   height: auto;
+  margin: 0;
 }
 
 button {
@@ -27,13 +43,4 @@ li {
   text-decoration: none;
   color: currentColor;
 }
-// .link {
-//   text-decoration: none;
-//   color: currentColor;
-// }
 
-// .list {
-//   list-style: none;
-//   margin: 0;
-//   padding: 0;
-// }

@@ -1,6 +1,9 @@
+import { getFavIngData } from '../render/render-fav-ing'
 const body = document.querySelector('body');
 // body.addEventListener('click', handleClickAddToFavIngr);
 const LS_KEY_FAV_ING = 'Fav-Ingredients';
+
+// getFavIngData();
 
 export function handleClickAddToFavIngr(e) {
   if (!e.target.classList.contains('js-ing-add') 
@@ -38,6 +41,11 @@ export function handleClickAddToFavIngr(e) {
   }
   if (e.target.classList.contains('close-modal2')) {
     body.removeEventListener('click', handleClickAddToFavIngr);
+    return
+  }
+  if (e.target.classList.contains('close-modal2-fav')) {
+    body.removeEventListener('click', handleClickAddToFavIngr);
+    getFavIngData();
     return
   }
 }

@@ -5,13 +5,18 @@ import { checkFavIng } from '../favorites/favorite-ing';
 const modalIngEl = document.querySelector('.components');
 const body = document.querySelector('body');
 
+
+
 export function renderModalIngr(data) {
+  const favIngWrapper = document.querySelector('.fav-ing-wrapper');
+  const closeElem =  !favIngWrapper ? 
+  `<svg class="close-modal2" width="32" height="32"><use href="${icons}#icon-close-modal"></use></svg>`:
+  `<svg class="close-modal2-fav" width="32" height="32"><use href="${icons}#icon-close-modal"></use></svg>`;
+
   const { classIng, textContentIng } = checkFavIng(data);
   const markupModalIng = `
   <div class="ing-wrapper" id="${data.idIngredient}">
-  <svg class="close-modal2" width="32" height="32">
-  <use href="${icons}#icon-close-modal"></use>
-</svg>
+  ${closeElem}
   <div class="component-name-wraper">
     <h2 class="component-name">${data.strIngredient}</h2>
    
