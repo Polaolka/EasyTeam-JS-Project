@@ -14,16 +14,12 @@ handleHomeLoad();
 async function handleHomeLoad() {
   if (cocktailNameFromFavorites) {
     gallery.clearGallery();
-    // inputEl.placeholder = cocktailNameFromFavorites;
     gallery.numberOfItemsPerPage();
     const data = await gallery.getDataByName(cocktailNameFromFavorites);
     gallery.setCurrentPage(1, data);
 
     // Очищення LS
-    localStorage.removeItem(LS_SEARCH);
-
-    // +++ в пласехолдер?
-
+    localStorage.removeItem(LS_SEARCH);//??????????????????????????????
     // Вішаємо слухачі
     galleryEl.addEventListener('click', handleOpenCloseModal);
     // galleryEl.addEventListener('click', handleOpenCloseModal);

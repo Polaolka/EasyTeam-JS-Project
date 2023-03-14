@@ -7,7 +7,7 @@ const LS_KEY_FAV_COCKT = 'Fav-Cocktails';
 
 const galleryEl = document.querySelector('.gallery__wrapper');
 const favWrapper = document.querySelector('.fav-cocktails__box');
-const favTitle = document.querySelector('.fav-cocktails__title');
+const galleryTitle = document.querySelector('.gallery__title');
 
 const render = new Render();
 const apiService = new ApiService();
@@ -23,8 +23,8 @@ export default class FavGallery {
     if (!favCocktails || favCocktails.length === 0) {
       localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify([]));
       const notFoundBlock = render.createNotFoundMarkup();
-      favTitle.style.display = 'none';
-      favWrapper.innerHTML = notFoundBlock;
+      galleryTitle.style.display = 'none';
+      galleryEl.innerHTML = notFoundBlock;
       return;
     }
     if (favCocktails.length > 0) {
@@ -52,7 +52,7 @@ export default class FavGallery {
     return pr;
   }
 
-   async getFavCocktData() {
+  async getFavCocktData() {
     const data = await this.waitAllPromises();
     const flatData = data.flatMap(i => i);
     return flatData;
