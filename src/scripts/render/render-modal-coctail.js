@@ -10,15 +10,15 @@ export function renderModalCoctails(data) {
     lockalStorageItems = [];
   }
 
-  const IdCockt = data.idDrink;
-  const isInLS = lockalStorageItems.includes(IdCockt);
+  const idCockt = data.idDrink;
+  const isInLS = lockalStorageItems.includes(idCockt);
 
   const className = isInLS
-  ? 'button-add js-cockt-remove-modal'
-  : 'button-add js-cockt-add-modal';
-const btnText = isInLS
-  ? `Remove from favovorites`
-  : `Add to favovorites`;
+    ? 'button-add js-cockt-remove-modal'
+    : 'button-add js-cockt-add-modal';
+  const btnText = isInLS
+    ? `Remove from favovorites`
+    : `Add to favovorites`;
   const markupModalCoctail = `
   <svg class="close-modal" width="32" height="32">
   <use href="${icons}#icon-close-modal"></use>
@@ -30,8 +30,7 @@ const btnText = isInLS
      ${data.strInstructions}
       </p>
     </div>
-    <img src="${
-      data.strDrinkThumb
+    <img src="${data.strDrinkThumb
     }" alt="coctail photo" width="280" class="coctails-img" />
 
     <h3 class="ingridients">INGREDIENTS</h3>

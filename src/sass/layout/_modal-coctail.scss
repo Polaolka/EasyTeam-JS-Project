@@ -35,18 +35,18 @@
 
   min-width: 270px;
   max-height: 656px;
+  // max-width: calc(100% - 48px);
+  // max-height: calc(100% - 48px);
   background-color: #fcfcfc;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 40px 20px 8px 20px;
   @include mq(tablet) {
     min-width: 822px;
-    overflow-y: hidden;
-    // min-height: 598px;
     padding-right: 28px;
     padding-left: 0;
     padding-top: 0;
     padding-bottom: 8px;
-    transform: translate(-50%, -40%);
+    transform: translate(-50%, -50%);
     display: flex;
     flex-wrap: wrap;
   }
