@@ -152,7 +152,10 @@ header {
   background-color: transparent;
   border: none;
   margin-left: auto;
-  position: relative;
+  // position: relative;
+  position: absolute;
+  top: 34px;
+  right: 5px;
 
   // z-index: 100;
   &:hover,

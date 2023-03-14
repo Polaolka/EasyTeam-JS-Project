@@ -23,15 +23,17 @@
   
   #toTop svg {
     position: relative;
-    top: 12px;
-    right: 30px;
-    fill: #fff;
+    top: -50px;
+    right: 35px;
+    fill: rgb(226, 90, 0);
+    width: 100px;
     transition: all 0.3s ease-in-out;
+    
   }
   
   #toTop:hover svg {
     cursor: pointer;
-    fill: #fff;
+    // fill: #fff;
     transition: all 0.3s ease-in-out;
   }
   
