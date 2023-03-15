@@ -1,6 +1,6 @@
 import ApiService from '../api/apiService';
 import Render from '../render/render';
-import { handleOpenCloseModalInFav } from '../modals/open-close-modal';
+import { handleOpenCloseModal } from '../modals/open-close-modal';
 import { removeFromFavHandler } from '../common/add-to-favorites';
 import { getDataFromLockalStorageByKey } from '../utils/getDataFromLockalStorageByKey';
 
@@ -22,7 +22,7 @@ export default class FavGallery {
       const data = await this.getFavCocktData();
       render.renderGallery(data);
       galleryEl.addEventListener('click', removeFromFavHandler);
-      galleryEl.addEventListener('click', handleOpenCloseModalInFav)
+      galleryEl.addEventListener('click', handleOpenCloseModal)
     }
   }
   makePromises() {
