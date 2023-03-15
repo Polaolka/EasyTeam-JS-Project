@@ -1,5 +1,7 @@
 import ApiService from '../api/apiService';
 import icons from '../../images/icons.svg';
+import Render from './render';
+
 import { handleOpenModalIngridientsFav } from '../home/open-close-modalIng';
 const LS_KEY_FAV_ING = 'Fav-Ingredients';
 const notFaundCoctail = `<div class="not-found">
@@ -9,14 +11,17 @@ const notFaundCoctail = `<div class="not-found">
 </svg>
 </div>`;
 
-
+const favIngsTitle = document.querySelector('.fav-cocktails__title');
 const favIngWrapper = document.querySelector('.fav-ing-wrapper');
 const apiService = new ApiService();
 
 
 
 function makePromises() {
-  const favIngs = JSON.parse(localStorage.getItem(LS_KEY_FAV_ING));
+  let favIngs = JSON.parse(localStorage.getItem(LS_KEY_FAV_ING));
+  if (!favIngs) {
+    favIngs = [];
+  }
   const promises = favIngs.reduce((acc, id) => {
     acc.push(apiService.fetchDataByIdIngr(id));
     return acc;
@@ -32,10 +37,10 @@ async function waitAllPromises(promisesIng) {
 
 
 function renderFavIng(data) {
-
   if (data.length === 0) {
+    favIngsTitle.style.display = 'none';
     favIngWrapper.innerHTML = notFaundCoctail;
-    console.log(')');
+    return
   }
   const galleryItems = data
     .map(elem => {
@@ -69,7 +74,12 @@ function renderFavIng(data) {
     }
   });
 }
-
+// function renderNotFoundBlock() {
+//   console.log('favIngsTitle: ', favIngsTitle);
+//   const render = new Render();
+//   render.renderNotFound()
+//   // favIngsTitle.classList.add('is-hidden');
+// }
 // Отримуємо данні з fav ing
 export async function getFavIngData() {
   const promises = makePromises();

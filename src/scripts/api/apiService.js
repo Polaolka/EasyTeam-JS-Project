@@ -1,6 +1,5 @@
 import axios from 'axios';
 const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/';
-('www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=552');
 
 export default class ApiService {
   // Отримуємо дані з сервера

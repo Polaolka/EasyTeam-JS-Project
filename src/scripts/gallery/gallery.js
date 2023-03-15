@@ -16,7 +16,6 @@ const inputEl = document.querySelector('.input');
 const cocktailNameFromFavorites = JSON.parse(localStorage.getItem(LS_SEARCH));
 
 const apiService = new ApiService();
-const render = new Render();
 const favGallery = new FavGallery();
 
 export default class Gallery {
@@ -62,6 +61,7 @@ export default class Gallery {
 
   // Отримуємо рандомні данні з рандомними коктейлями
   async getRandomData() {
+    const render = new Render();
     this.numberOfItemsPerPage();
     this.randomCoctails();
     const data = await this.allPromises(this.promises);
@@ -146,6 +146,8 @@ export default class Gallery {
 
   //Встановлюэмо поточну сторынку ы запускаэмо роботу пагынацыъ
   async setCurrentPage(pageNum, data) {
+    const render = new Render();
+
     if (data) {
       this.currentData = data;
       this.addPaginationHandler();

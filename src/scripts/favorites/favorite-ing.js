@@ -1,81 +1,64 @@
 import { getFavIngData } from '../render/render-fav-ing'
-const body = document.querySelector('body');
-// body.addEventListener('click', handleClickAddToFavIngr);
-const LS_KEY_FAV_ING = 'Fav-Ingredients';
+import { getDataFromLockalStorageByKey } from '../utils/getDataFromLockalStorageByKey';
+import { setDataToLocalStorageByKey } from '../utils/setDataToLocalStorageByKey';
+import { getCardId } from '../utils/getCardId';
 
-// getFavIngData();
+const LS_KEY_FAV_ING = 'Fav-Ingredients';
+const body = document.querySelector('body');
+
 
 export function handleClickAddToFavIngr(e) {
-  if (!e.target.classList.contains('js-ing-add') 
-  && !e.target.classList.contains('js-ing-remove') 
-  && e.target.classList.contains('close-modal2')) {
-    return;
-  }
+  const elem = e.target;
 
-  if (e.target.classList.contains('js-ing-add')) {
-    const favIngs = JSON.parse(localStorage.getItem(LS_KEY_FAV_ING));
+  const addBtn = elem.closest('.js-ing-add');
+  const removeBtn = elem.closest('.js-ing-remove');
+  const closeModal2 = elem.closest('.close-modal2');
+  const closeModal2Fav = elem.closest('.close-modal2-fav');
 
-    if(!favIngs) {
-      localStorage.setItem(LS_KEY_FAV_ING, JSON.stringify([]));
-      addToFavorites(e);
+  const favIngs = getDataFromLockalStorageByKey(LS_KEY_FAV_ING);
+
+  if (addBtn) {
+    const ingId = getCardId(addBtn, '.ing-wrapper');
+    if (!favIngs) {
+      addToFavorites(addBtn, ingId);
       return
     }
-    addToFavorites(e);
+    addToFavorites(addBtn, ingId, favIngs);
     return
   }
 
-  if (e.target.classList.contains('js-ing-remove')) {
-    const favIngs = JSON.parse(localStorage.getItem(LS_KEY_FAV_ING));
-
-    let favIngrID = e.target.closest('.ing-wrapper').id;
-
-    const idx = favIngs.findIndex(ing => ing === favIngrID);
-
-    favIngs.splice(idx, 1);
-
-    localStorage.setItem(LS_KEY_FAV_ING, JSON.stringify(favIngs));
-    e.target.classList.add('js-ing-add');
-    e.target.classList.remove('js-ing-remove');
-    e.target.textContent = 'Add to favorite';
-    return;
+  if (removeBtn) {
+    const ingId = getCardId(removeBtn, '.ing-wrapper');
+    removeCardIdFromLockalStorage(ingId, favIngs)
+    changeContentInIngrCardAddRemoveBtn(removeBtn);
+    return
   }
-  if (e.target.classList.contains('close-modal2')) {
+
+  if (closeModal2) {
     body.removeEventListener('click', handleClickAddToFavIngr);
     return
   }
-  if (e.target.classList.contains('close-modal2-fav')) {
+  if (closeModal2Fav) {
     body.removeEventListener('click', handleClickAddToFavIngr);
     getFavIngData();
     return
   }
 }
-function addToFavorites(e) {
-  const favIngs = JSON.parse(localStorage.getItem(LS_KEY_FAV_ING));
-  let favIngrID = e.target.closest('.ing-wrapper').id;
-  favIngs.push(favIngrID);
-  localStorage.setItem(LS_KEY_FAV_ING, JSON.stringify(favIngs));
-  e.target.classList.add('js-ing-remove');
-  e.target.classList.remove('js-ing-add');
-  e.target.textContent = 'Remove from favorite';
+function addToFavorites(elem, ingId, favIngs = []) {
+  favIngs.push(ingId);
+  setDataToLocalStorageByKey(LS_KEY_FAV_ING, favIngs);
+  changeContentInIngrCardAddRemoveBtn(elem)
+}
+function removeCardIdFromLockalStorage(ingId, favIngs = []) {
+  const filtredData = favIngs.filter(i => i !== ingId);
+  setDataToLocalStorageByKey(LS_KEY_FAV_ING, filtredData)
+}
+function changeContentInIngrCardAddRemoveBtn(elem) {
+  elem.classList.toggle('js-ing-remove');
+  elem.classList.toggle('js-ing-add');
+  elem.innerHTML = elem.classList.contains('js-ing-remove')
+    ? `Remove from favorites`
+    : `Add to favorites`;
 }
 
-export function checkFavIng(data) {
-  let classIng = '';
-  let textContentIng = '';
-  let favIngs = JSON.parse(localStorage.getItem(LS_KEY_FAV_ING));
-  if(!favIngs) {
-    localStorage.setItem(LS_KEY_FAV_ING, JSON.stringify([]));
-    favIngs = JSON.parse(localStorage.getItem(LS_KEY_FAV_ING));
-  }
-  if (favIngs.includes(data.idIngredient)) {
-    classIng = "js-ing-remove";
-    textContentIng = "Remove from favorite";
-  } else {
-    classIng = "js-ing-add";
-    textContentIng = "Add to favorite";
-  }
-  return {
-    classIng,
-    textContentIng,
-  }
-}
+

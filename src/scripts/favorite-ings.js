@@ -4,7 +4,6 @@ import './common/mobile-menu';
 import './common/theme-toggler';
 import './home/open-close-modalIng';
 import './common/input-validation';
-import './common/slider_glide';
 import './common/dropdown-menu-mob';
 import './favorites/favorite-ing'
 import './render/render-fav-ing'

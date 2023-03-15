@@ -3,39 +3,29 @@ import Gallery from '../gallery/gallery';
 
 const LS_KEY_FAV_COCKT = 'Fav-Cocktails';
 const galleryEl = document.querySelector('.gallery__wrapper');
+const galleryTitle = document.querySelector('.gallery__title');
 
 export default class Render {
-  constructor() { }
   // Рендеримо галерею
   renderGallery(data) {
     const gallery = new Gallery();
-    // let sceletonMarkup = '';
-    // const itemsPerPage = gallery.numberOfItemsPerPage();
+    const galleryItems = data.map(({ strDrinkThumb, strDrink, idDrink }) => {
 
-    // for (let i = 0; i < itemsPerPage; i += 1) {
-    //   sceletonMarkup += this.createSceletonMarkup();
-    // }
-    // galleryEl.insertAdjacentHTML('beforeend', sceletonMarkup);
+      let lockalStorageItems = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
+      if (!lockalStorageItems) {
+        lockalStorageItems = [];
+      }
+      const isInLS = lockalStorageItems.includes(idDrink);
 
-    const galleryItems = data
-      .map(({ strDrinkThumb, strDrink, idDrink }) => {
+      const className = isInLS
+        ? 'fav-buttons__btn--remove js-cockt-remove'
+        : 'buttons__btn--add-to js-cockt-add';
 
-        // let lockalStorageItems = JSON.parse(localStorage.getItem('favIds'));
-        let lockalStorageItems = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
-        if (!lockalStorageItems) {
-          // localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify([]));
-          lockalStorageItems = [];}
+      const btnText = isInLS
+        ? `Remove<svg class="buttons__icon"><use href="${icons}#icon-heart_fill"></use></svg>`
+        : `Add to<svg class="buttons__icon"><use href="${icons}#heart"></use></svg>`;
 
-        const isInLS = lockalStorageItems.includes(idDrink);
-
-        const className = isInLS
-          ? 'fav-buttons__btn--remove js-cockt-remove'
-          : 'buttons__btn--add-to js-cockt-add';
-        const btnText = isInLS
-          ? `Remove<svg class="buttons__icon"><use href="${icons}#icon-heart_fill"></use></svg>`
-          : `Add to<svg class="buttons__icon"><use href="${icons}#heart"></use></svg>`;
-
-        return `<div class="card js-card" id="${idDrink}">
+      return `<div class="card js-card" id="${idDrink}">
                 <img src="${strDrinkThumb}" alt="${strDrink}" class="card__img">
                 <h3 class="card__title">${strDrink}</h3>
                 <div class="buttons">
@@ -43,11 +33,16 @@ export default class Render {
                     <button type="button" class="buttons__btn ${className} " data-id="${idDrink}">${btnText}</button>
                 </div>
             </div>`;
-      })
+    })
       .join('');
 
     gallery.clearGallery();
     galleryEl.insertAdjacentHTML('beforeend', galleryItems);
+  }
+
+  renderNotFound() {
+    galleryTitle.style.display = 'none';
+    galleryEl.innerHTML = this.createNotFoundMarkup();
   }
 
   createNotFoundMarkup() {
@@ -70,4 +65,3 @@ export default class Render {
             </div>`;
   }
 }
-      
