@@ -13,6 +13,5 @@ function handleSearchFaforitSubmit(event) {
     document.location.assign('http://localhost:1234');
 
     localStorage.setItem(LS_SEARCH, JSON.stringify(cocktailName));
-    const test = JSON.parse(localStorage.getItem(LS_SEARCH));
 }
 

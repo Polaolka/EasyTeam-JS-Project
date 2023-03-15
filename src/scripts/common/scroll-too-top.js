@@ -1,3 +1,22 @@
+const btnToTopEl = document.querySelector('#toTop');
+document.addEventListener('DOMContentLoaded', domContentLoadedHandler);
+
+function domContentLoadedHandler() {
+  window.addEventListener('scroll', showOrHideBtnHandler)
+  // При клике прокручиываем на самый верх
+  btnToTopEl.addEventListener('click', scrollTo(0, 400));
+}
+
+function showOrHideBtnHandler() {
+  // Если прокрутили дальше 599px, показываем кнопку
+  if (scrollY > 100) {
+    btnToTopEl.classList.add('show');
+    // Иначе прячем
+  } else {
+    btnToTopEl.classList.remove('show');
+  }
+};
+
 function scrollTo(to, duration = 700) {
   const element = document.scrollingElement || document.documentElement,
     start = element.scrollTop,
@@ -21,22 +40,3 @@ function scrollTo(to, duration = 700) {
     };
   animateScroll();
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-  let btn = document.querySelector('#toTop');
-  window.addEventListener('scroll', function () {
-    // Если прокрутили дальше 599px, показываем кнопку
-    if (pageYOffset > 100) {
-      btn.classList.add('show');
-      // Иначе прячем
-    } else {
-      btn.classList.remove('show');
-    }
-  });
-
-  // При клике прокручиываем на самый верх
-  btn.onclick = function (click) {
-    click.preventDefault();
-    scrollTo(0, 400);
-  };
-});

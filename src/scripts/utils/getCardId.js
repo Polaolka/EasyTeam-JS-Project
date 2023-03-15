@@ -1,0 +1,1 @@
+export const getCardId = (el, className = '.js-card') => el.closest(`${className}`).id;

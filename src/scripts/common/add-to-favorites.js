@@ -1,88 +1,64 @@
 import icons from '../../images/icons.svg';
-const galleryEl = document.querySelector('.gallery');
-// body.addEventListener('click', handleClickAddToFavIngr);
+import { getCardId } from '../utils/getCardId';
+import { getDataFromLockalStorageByKey } from '../utils/getDataFromLockalStorageByKey';
+import { setDataToLocalStorageByKey } from '../utils/setDataToLocalStorageByKey';
+
 const LS_KEY_FAV_COCKT = 'Fav-Cocktails';
-// galleryEl.addEventListener('.addToFavHandlerN');
 
 import FavGallery from '../favorites/build-fav-gallery';
 
-export function addToFavHandler(e) {
-  console.log('e.target: ', e.target);
-  // console.log(this.attributes)
-  const id = this.attributes['data-id'].value;
-  const favIds = JSON.parse(localStorage.getItem('favIds') ?? '{}');
-
-  if (favIds[id]) {
-    delete favIds[id];
-    this.classList.remove('is-favorite');
-  } else {
-    favIds[id] = true;
-    this.classList.add('is-favorite');
-  }
-
-  localStorage.setItem('favIds', JSON.stringify(favIds));
-}
-
 export function addToFavHandlerN(e) {
-  if (
-    !e.target.classList.contains('js-cockt-add') &&
-    !e.target.classList.contains('js-cockt-remove')
-  ) {
+  const elem = e.target;
+
+  const addBtn = elem.closest('.js-cockt-add');
+  const removeBtn = elem.closest('.js-cockt-remove');
+
+  if (addBtn) {
+    addToFavoriteCoctails(addBtn);
     return;
   }
 
-  if (e.target.classList.contains('js-cockt-add')) {
-    addToFavCocktails(e);
-    return;
-  }
-
-  if (e.target.classList.contains('js-cockt-remove')) {
-    removeIdFromFavList(e);
-    changeContentInCardAddRemoveBtn(e);
+  if (removeBtn) {
+    removeCardIdFromLockalStorage(cardId, favCocktails);
+    changeContentInCardAddRemoveBtn(removeBtn);
     return;
   }
 }
-function addToFavCocktails(e) {
-  const favCocktails = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
-  if (!favCocktails) {
-    localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify([]));
-    const favCocktails = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
-    addToFavorites(favCocktails, e);
-    return;
-  }
-  addToFavorites(favCocktails, e);
-  return;
-}
-
 export function removeFromFavHandler(e) {
   if (!e.target.classList.contains('js-cockt-remove')) {
     return;
   }
-  removeIdFromFavList(e);
+  const favCocktails = getDataFromLockalStorageByKey(LS_KEY_FAV_COCKT);
+  const cardId = getCardId(e.target);
+  removeCardIdFromLockalStorage(cardId, favCocktails);
   const favGallery = new FavGallery();
   favGallery.renderFav();
   return;
 }
-function removeIdFromFavList(e) {
-  const favCocktails = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
-  let favCocktailID = e.target.closest('.js-card').id;
-  const filtred = favCocktails.filter(i => i !== favCocktailID);
-  localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify(filtred));
+
+function addToFavoriteCoctails(el) {
+  const favCocktails = getDataFromLockalStorageByKey(LS_KEY_FAV_COCKT);
+  const cardId = getCardId(el);
+  if (!favCocktails) {
+    addCardIdToLockalStorage(el, cardId);
+    return;
+  }
+  addCardIdToLockalStorage(el, cardId, favCocktails);
+  return;
 }
-
-function addToFavorites(favCocktails, e) {
-  // const favCocktails = JSON.parse(localStorage.getItem(LS_KEY_FAV_COCKT));
-  let favCocktailID = e.target.closest('.js-card').id;
-  favCocktails.push(favCocktailID);
-
-  localStorage.setItem(LS_KEY_FAV_COCKT, JSON.stringify(favCocktails));
-  changeContentInCardAddRemoveBtn(e)
+function removeCardIdFromLockalStorage(cardId, favCocktails = []) {
+  const filtredData = favCocktails.filter(i => i !== cardId);
+  setDataToLocalStorageByKey(LS_KEY_FAV_COCKT, filtredData)
 }
-
-function changeContentInCardAddRemoveBtn(e) {
-  e.target.classList.toggle('js-cockt-remove');
-  e.target.classList.toggle('js-cockt-add');
-  e.target.innerHTML = e.target.classList.contains('js-cockt-remove')
+function addCardIdToLockalStorage(el, cardId, favCocktails = []) {
+  favCocktails.push(cardId);
+  setDataToLocalStorageByKey(LS_KEY_FAV_COCKT, favCocktails);
+  changeContentInCardAddRemoveBtn(el);
+}
+function changeContentInCardAddRemoveBtn(el) {
+  el.classList.toggle('js-cockt-remove');
+  el.classList.toggle('js-cockt-add');
+  el.innerHTML = el.classList.contains('js-cockt-remove')
     ? `Remove<svg class="buttons__icon"><use href="${icons}#icon-heart_fill"></use></svg>`
     : `Add to<svg class="buttons__icon"><use href="${icons}#heart"></use></svg>`;
 }
