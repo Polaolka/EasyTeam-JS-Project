@@ -3,7 +3,7 @@ const themeTogglerMobileEl = document.querySelector('.theme-slider-mobile');
 
 import { getDataFromLockalStorageByKey } from "../utils/getDataFromLockalStorageByKey";
 import { setDataToLocalStorageByKey } from "../utils/setDataToLocalStorageByKey";
-LS_KEY_THEME = 'theme';
+const LS_KEY_THEME = 'theme';
 const htmlEl = document.querySelector('html');
 const isInLockalStorageTheme = getDataFromLockalStorageByKey(LS_KEY_THEME)
 
