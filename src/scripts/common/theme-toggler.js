@@ -4,6 +4,7 @@ const themeTogglerMobileEl = document.querySelector('.theme-slider-mobile');
 import { getDataFromLockalStorageByKey } from "../utils/getDataFromLockalStorageByKey";
 import { setDataToLocalStorageByKey } from "../utils/setDataToLocalStorageByKey";
 const LS_KEY_THEME = 'theme';
+const LS_THEME_DATA = "theme-dark";
 const htmlEl = document.querySelector('html');
 const isInLockalStorageTheme = getDataFromLockalStorageByKey(LS_KEY_THEME);
 
@@ -20,7 +21,7 @@ function handleUserThemeChoice(e) {
     const userThemeChoice = e.target.checked ? true : false;
     if (userThemeChoice) {
         htmlEl.classList.add('dark');
-        setDataToLocalStorageByKey('theme', 'theme-dark');
+        setDataToLocalStorageByKey(LS_KEY_THEME, LS_THEME_DATA);
     } else {
         htmlEl.classList.remove('dark');
         localStorage.removeItem('theme');
