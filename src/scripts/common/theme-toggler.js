@@ -6,7 +6,7 @@ import { setDataToLocalStorageByKey } from "../utils/setDataToLocalStorageByKey"
 const LS_KEY_THEME = 'theme';
 const LS_THEME_DATA = "theme-dark";
 const htmlEl = document.querySelector('html');
-const isInLockalStorageTheme = getDataFromLockalStorageByKey(LS_KEY_THEME);
+const isInLockalStorageTheme = getDataFromLockalStorageByKey(LS_KEY_THEME)
 
 if (isInLockalStorageTheme) {
     htmlEl.classList.add('dark');
