@@ -19,7 +19,7 @@ async function handleHomeLoad() {
     gallery.setCurrentPage(1, data);
 
     // Очищення LS
-    localStorage.removeItem(LS_SEARCH);//??????????????????????????????
+    localStorage.removeItem(LS_SEARCH);
     // Вішаємо слухачі
     galleryEl.addEventListener('click', handleOpenCloseModal);
     // galleryEl.addEventListener('click', handleOpenCloseModal);
@@ -54,4 +54,3 @@ async function handleHomeLoad() {
     galleryEl.addEventListener('click', handleOpenCloseModal)
   }
 }
-console.log('2');

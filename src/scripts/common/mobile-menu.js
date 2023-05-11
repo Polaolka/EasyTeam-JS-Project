@@ -17,8 +17,7 @@
 
 
       if (localStorage.getItem('theme') === 'theme-dark') {
-        themeTogglerMobileEl.setAttribute('checked', 'checked');
-      console.log(themeTogglerMobileEl.hasAttribute('checked'));}
+        themeTogglerMobileEl.setAttribute('checked', 'checked');}
 
       // const scrollLockMethod = !isMenuOpen
       //   ? 'disableBodyScroll'
